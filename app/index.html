@@ -2,8 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- viewport-fit=cover lets the app extend under the notch / browser chrome; the canvas is
+         then sized with dvh so nothing is cut off behind a mobile browser's address bar. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>PlayParty</title>
+    <meta name="theme-color" content="#0D0D1A">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="PlayParty">
     <style>
         html, body {
             margin: 0;
@@ -12,10 +19,24 @@
             height: 100%;
             overflow: hidden;
             background-color: #0D0D1A;
+            overscroll-behavior: none;
         }
+        /* Pin to the VISUAL viewport and size with dvh so the app always fits the screen — a
+           mobile browser's retractable toolbar no longer clips the bottom of the UI. */
         #ComposeTarget {
-            width: 100%;
-            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;   /* fallback for browsers without dvh */
+            height: 100dvh;
+        }
+        /* Skiko renders into a <canvas> it creates inside #ComposeTarget — make it fill exactly. */
+        #ComposeTarget canvas,
+        canvas {
+            display: block;
+            width: 100% !important;
+            height: 100% !important;
         }
     </style>
 </head>
