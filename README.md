@@ -24,7 +24,7 @@ cp -R composeApp/build/dist/wasmJs/productionExecutable/* playparty-web/app/
 ```
 (See kmp-essentials §11 for the wasmJs Coil-image gotcha.)
 
-## Deploy to Netlify
+## Deploy to Netlify (custom domain: playparty.space)
 1. New site → Import from Git → pick this repo (or the `playparty-web` subdir).
 2. Build command: *none*. Publish directory: `.` (set in `netlify.toml`).
 3. Deploy. Landing serves at `/`, the app at `/app/`. Pushing to the default branch auto-deploys.
