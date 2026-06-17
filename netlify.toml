@@ -1,0 +1,70 @@
+# Netlify config for the standalone PlayParty site.
+# Landing page = / (index.html). The compiled KMP web app = /app/.
+# Translated from the original Apache .htaccess that served the app.
+
+[build]
+  # Static site — nothing to build, just publish the repo root.
+  publish = "."
+
+# ── WASM: serve with the correct MIME so the browser streaming-compiles it
+#    instead of failing with "Incorrect response MIME type" ──
+[[headers]]
+  for = "/app/*.wasm"
+  [headers.values]
+    Content-Type = "application/wasm"
+
+# ── .wasm files ARE content-hashed (e.g. ec230303974fdfd7aee4.wasm), so the
+#    filename changes on every content change → safe to cache forever. ──
+[[headers]]
+  for = "/app/*.wasm"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ── .js files are NOT content-hashed by the Kotlin/wasm webpack output — the
+#    entry (playparty.js) and chunks (840.js, 90.js) keep STABLE names across
+#    builds. Caching them "immutable" pinned returning visitors to whatever JS
+#    they first downloaded (they saw a months-old UI even after redeploys).
+#    Revalidate every load instead: cheap 304 when unchanged, fresh when not. ──
+[[headers]]
+  for = "/app/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# ── App entry point must always refresh on redeploy ──
+[[headers]]
+  for = "/app/index.html"
+  [headers.values]
+    Cache-Control = "no-store, no-cache, must-revalidate"
+
+# ── PWA manifest: correct MIME so the browser parses it; revalidate (not
+#    content-hashed). ──
+[[headers]]
+  for = "/app/manifest.webmanifest"
+  [headers.values]
+    Content-Type = "application/manifest+json"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# ── Service worker: MUST always revalidate so a fixed SW propagates — this is
+#    the ONLY self-update / recovery channel for installed clients. Placed after
+#    the /app/*.js rule above so this no-store value wins for the SW file. ──
+[[headers]]
+  for = "/app/firebase-messaging-sw.js"
+  [headers.values]
+    Cache-Control = "no-store, no-cache, must-revalidate"
+    Service-Worker-Allowed = "/app/"
+
+# ── PWA icons: stable names, change rarely — a day's cache is fine. ──
+[[headers]]
+  for = "/app/icons/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# ── SPA fallback for the Compose client-side router: any deep URL under
+#    /app (e.g. /app/room/ABCD) serves the app's index.html so refresh +
+#    deep links resolve instead of 404. status 200 = rewrite, not redirect.
+#    No force=true, so real static files (manifest, icons, SW) are served
+#    directly and are NOT shadowed by this rewrite. ──
+[[redirects]]
+  from = "/app/*"
+  to = "/app/index.html"
+  status = 200
