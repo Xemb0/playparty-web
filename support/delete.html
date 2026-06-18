@@ -16,8 +16,13 @@
     </style>
   </head>
   <body class="bg-gray-900 text-white">
-    <header class="border-b border-gray-800 px-6 py-5">
+    <header class="border-b border-gray-800 px-6 py-5 flex items-center justify-between">
       <a href="/" class="wordmark text-2xl font-black"><span class="play">Play</span><span class="party">Party</span></a>
+      <nav class="hidden sm:flex gap-5 text-sm text-purple-300">
+        <a href="/games/" class="hover:text-purple-200">Games</a>
+        <a href="/faq.html" class="hover:text-purple-200">FAQ</a>
+        <a href="/about.html" class="hover:text-purple-200">About</a>
+      </nav>
     </header>
 
     <main class="max-w-3xl mx-auto px-6 py-14">
@@ -51,13 +56,20 @@
         </ul>
         <p class="text-gray-500 text-sm mt-4">Live video and voice are never recorded or stored. Anonymized, aggregated analytics that cannot identify you may be retained. Some records may be kept where required by law.</p>
       </section>
-
-      <nav class="flex flex-wrap gap-6 text-sm pt-6 border-t border-gray-800">
-        <a href="/" class="text-purple-400 hover:text-purple-300">Home</a>
-        <a href="/support/" class="text-purple-400 hover:text-purple-300">Help Center</a>
-        <a href="/privacy-policy.html" class="text-purple-400 hover:text-purple-300">Privacy Policy</a>
-        <a href="/contact.html" class="text-purple-400 hover:text-purple-300">Contact</a>
-      </nav>
     </main>
+
+    <footer class="bg-gray-950 border-t border-gray-800 py-8 mt-10">
+      <nav class="max-w-4xl mx-auto px-6 flex flex-wrap gap-5 text-sm text-purple-400">
+        <a href="/" class="hover:text-purple-300">Home</a>
+        <a href="/games/" class="hover:text-purple-300">All Games</a>
+        <a href="/faq.html" class="hover:text-purple-300">FAQ</a>
+        <a href="/about.html" class="hover:text-purple-300">About</a>
+        <a href="/privacy-policy.html" class="hover:text-purple-300">Privacy</a>
+        <a href="/terms-of-service.html" class="hover:text-purple-300">Terms</a>
+        <a href="/contact.html" class="hover:text-purple-300">Contact</a>
+        <a href="/support/" class="hover:text-purple-300">Support</a>
+      </nav>
+      <p class="max-w-4xl mx-auto px-6 text-gray-600 text-xs mt-4">&copy; 2026 PlayParty by Imautotech.</p>
+    </footer>
   </body>
 </html>
