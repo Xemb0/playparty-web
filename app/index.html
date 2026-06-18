@@ -42,6 +42,150 @@
 </head>
 <body>
 <div id="ComposeTarget"></div>
+
+<!-- LiveKit Client JS SDK (UMD global `LivekitClient`) — loaded BEFORE the wasm app so the
+     __pp_lk_* bridge globals exist before Kotlin init. Adapted from WatchParty's web LiveKit. -->
+<script src="https://unpkg.com/livekit-client@2.17.3/dist/livekit-client.umd.js"></script>
+<script>
+    window.__pp_lk_room = null;
+    window.__pp_lk_activeSpeakers = {};
+    window.__pp_lk_videoBindings = window.__pp_lk_videoBindings || {};
+    window.__pp_lk_lastCameraError = '';
+    window.__pp_lk_pendingCamera = null;
+    window.__pp_lk_pendingMic = null;
+
+    // identity -> Set<HTMLVideoElement>. A renderer registers its <video> BEFORE the track may
+    // exist; room events re-attach when it lands. Attaching once at mount silently no-ops otherwise.
+    function __pp_lk_tryAttachToBindings(participant) {
+        if (!participant) return;
+        var els = window.__pp_lk_videoBindings[participant.identity];
+        if (!els || els.size === 0) return;
+        participant.videoTrackPublications.forEach(function(pub) {
+            if (pub.track) {
+                els.forEach(function(el) { try { pub.track.attach(el); } catch (e) { console.error('[PP-LK] attach failed', e); } });
+            }
+        });
+    }
+
+    window.__pp_lk_connect = async function(url, token) {
+        try {
+            const room = new LivekitClient.Room();
+            await room.connect(url, token);
+            window.__pp_lk_room = room;
+
+            room.on('trackSubscribed', function(track, pub, participant) { if (track.kind === 'video') __pp_lk_tryAttachToBindings(participant); });
+            room.on('localTrackPublished', function(pub, participant) { if (pub.kind === 'video') __pp_lk_tryAttachToBindings(participant); });
+            room.on('participantConnected', function(participant) { __pp_lk_tryAttachToBindings(participant); });
+            room.on('trackUnsubscribed', function(track) { try { track.detach(); } catch (_) {} });
+            room.on('activeSpeakersChanged', function(speakers) {
+                var map = {};
+                if (speakers && speakers.forEach) speakers.forEach(function(p) { if (p && p.identity) map[p.identity] = true; });
+                window.__pp_lk_activeSpeakers = map;
+            });
+
+            __pp_lk_tryAttachToBindings(room.localParticipant);
+
+            if (window.__pp_lk_pendingCamera !== null) {
+                var want = window.__pp_lk_pendingCamera; window.__pp_lk_pendingCamera = null;
+                try { await room.localParticipant.setCameraEnabled(want); __pp_lk_tryAttachToBindings(room.localParticipant); }
+                catch (e) { window.__pp_lk_lastCameraError = (e && e.name ? e.name + ': ' : '') + (e && e.message ? e.message : 'camera failed'); }
+            }
+            if (window.__pp_lk_pendingMic !== null) {
+                var wantMic = window.__pp_lk_pendingMic; window.__pp_lk_pendingMic = null;
+                try { await room.localParticipant.setMicrophoneEnabled(wantMic); } catch (e) { console.error('[PP-LK] flush mic failed', e); }
+            }
+            console.log('[PP-LK] Connected to room');
+            return true;
+        } catch (e) { console.error('[PP-LK] Connect failed:', e); return false; }
+    };
+
+    window.__pp_lk_disconnect = async function() {
+        if (window.__pp_lk_room) { await window.__pp_lk_room.disconnect(); window.__pp_lk_room = null; console.log('[PP-LK] Disconnected'); }
+    };
+
+    window.__pp_lk_setMicEnabled = async function(enabled) {
+        if (!window.__pp_lk_room) { window.__pp_lk_pendingMic = enabled; return false; }
+        try { await window.__pp_lk_room.localParticipant.setMicrophoneEnabled(enabled); window.__pp_lk_pendingMic = null; return true; }
+        catch (e) { console.error('[PP-LK] setMicEnabled failed:', e); throw e; }
+    };
+
+    window.__pp_lk_setCameraEnabled = async function(enabled) {
+        if (!window.__pp_lk_room) { window.__pp_lk_pendingCamera = enabled; return false; }
+        try { await window.__pp_lk_room.localParticipant.setCameraEnabled(enabled); __pp_lk_tryAttachToBindings(window.__pp_lk_room.localParticipant); return true; }
+        catch (e) {
+            console.error('[PP-LK] setCameraEnabled failed:', e);
+            window.__pp_lk_lastCameraError = (e && e.name ? e.name + ': ' : '') + (e && e.message ? e.message : 'camera failed');
+            throw e;
+        }
+    };
+
+    window.__pp_lk_hasPermission = async function(kind) {
+        try {
+            if (!navigator.permissions || !navigator.permissions.query) return false;
+            var st = await navigator.permissions.query({ name: kind });
+            return !!(st && st.state === 'granted');
+        } catch (e) { return false; }
+    };
+
+    window.__pp_lk_reattachLocal = function() { if (window.__pp_lk_room) __pp_lk_tryAttachToBindings(window.__pp_lk_room.localParticipant); };
+
+    // Gesture-driven permission primers so the browser shows its prompt the instant the user taps.
+    window.__pp_lk_requestMediaPermission = async function() {
+        try {
+            if (await window.__pp_lk_hasPermission('camera')) return true;
+            var s = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+            s.getTracks().forEach(function(t){ t.stop(); });
+            return true;
+        } catch (e) { console.warn('[PP-LK] camera permission denied/failed:', e && e.name); return false; }
+    };
+    window.__pp_lk_requestAudioPermission = async function() {
+        try {
+            if (await window.__pp_lk_hasPermission('microphone')) return true;
+            var s = await navigator.mediaDevices.getUserMedia({ video: false, audio: true });
+            s.getTracks().forEach(function(t){ t.stop(); });
+            return true;
+        } catch (e) { console.warn('[PP-LK] audio permission denied/failed:', e && e.name); return false; }
+    };
+
+    window.__pp_lk_getParticipants = function() {
+        if (!window.__pp_lk_room) return '[]';
+        var participants = [];
+        var lp = window.__pp_lk_room.localParticipant;
+        participants.push({ identity: lp.identity, name: lp.name || '', isSpeaking: (window.__pp_lk_activeSpeakers[lp.identity] === true) || lp.isSpeaking, isMicEnabled: lp.isMicrophoneEnabled, isCameraEnabled: lp.isCameraEnabled, connectionQuality: 'EXCELLENT' });
+        window.__pp_lk_room.remoteParticipants.forEach(function(p) {
+            participants.push({ identity: p.identity, name: p.name || '', isSpeaking: (window.__pp_lk_activeSpeakers[p.identity] === true) || p.isSpeaking, isMicEnabled: p.isMicrophoneEnabled, isCameraEnabled: p.isCameraEnabled, connectionQuality: p.connectionQuality || 'UNKNOWN' });
+        });
+        return JSON.stringify(participants);
+    };
+
+    window.__pp_lk_getConnectionState = function() {
+        if (!window.__pp_lk_room) return 'DISCONNECTED';
+        switch (window.__pp_lk_room.state) {
+            case 'connected': return 'CONNECTED';
+            case 'connecting': return 'CONNECTING';
+            case 'reconnecting': return 'RECONNECTING';
+            default: return 'DISCONNECTED';
+        }
+    };
+
+    window.__pp_lk_attachVideo = function(identity, videoElement) {
+        if (!window.__pp_lk_videoBindings[identity]) window.__pp_lk_videoBindings[identity] = new Set();
+        window.__pp_lk_videoBindings[identity].add(videoElement);
+        if (!window.__pp_lk_room) return true;
+        var participant = (window.__pp_lk_room.localParticipant.identity === identity)
+            ? window.__pp_lk_room.localParticipant
+            : window.__pp_lk_room.remoteParticipants.get(identity);
+        if (!participant) return true;
+        participant.videoTrackPublications.forEach(function(pub) { if (pub.track) { try { pub.track.attach(videoElement); } catch (e) { console.error('[PP-LK] attach', e); } } });
+        return true;
+    };
+
+    window.__pp_lk_detachVideo = function(videoElement) {
+        if (window.__pp_lk_videoBindings) Object.keys(window.__pp_lk_videoBindings).forEach(function(k) { window.__pp_lk_videoBindings[k].delete(videoElement); });
+        if (videoElement.srcObject) { videoElement.srcObject.getTracks().forEach(function(t) { t.stop(); }); videoElement.srcObject = null; }
+    };
+</script>
+
 <script src="playparty.js"></script>
 </body>
 </html>
