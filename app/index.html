@@ -187,30 +187,5 @@
 </script>
 
 <script src="playparty.js"></script>
-
-<!-- TEMP LiveKit diagnostic badge — remove after debugging the camera/video issue -->
-<script>
-(function(){
-  var d = document.createElement('div');
-  d.style.cssText='position:fixed;left:4px;bottom:4px;z-index:2147483647;background:rgba(0,0,0,.82);color:#6f6;font:11px/1.35 monospace;padding:5px 7px;border-radius:5px;pointer-events:none;white-space:pre;max-width:96vw;';
-  function add(){ (document.body||document.documentElement).appendChild(d); }
-  if (document.body) add(); else window.addEventListener('DOMContentLoaded', add);
-  setInterval(function(){
-    try {
-      var bind = Object.keys(window.__pp_lk_videoBindings||{}).map(function(k){return k.slice(0,6)+'×'+window.__pp_lk_videoBindings[k].size;}).join(' ')||'none';
-      var r = window.__pp_lk_room;
-      if (!r) { d.textContent = 'LK: NO ROOM OBJECT\nbindings='+bind+'\nerr='+(window.__pp_lk_lastCameraError||'-'); return; }
-      var lp = r.localParticipant, cam = null;
-      lp.videoTrackPublications.forEach(function(p){ if (p.source==='camera' || p.kind==='video') cam = p; });
-      var mst = cam && cam.track && cam.track.mediaStreamTrack;
-      d.textContent =
-        'LK '+r.state+'  remotes='+r.remoteParticipants.size+'  me='+(lp.identity||'?').slice(0,6)+
-        '\ncamEnabled='+lp.isCameraEnabled+'  camTrack='+(cam&&cam.track?'Y':'N')+(mst?(' '+mst.readyState):'')+
-        '\nbindings='+bind+
-        '\nerr='+(window.__pp_lk_lastCameraError||'-');
-    } catch(e){ d.textContent = 'LK dbg: '+e.message; }
-  }, 1000);
-})();
-</script>
 </body>
 </html>
