@@ -68,6 +68,25 @@
   [headers.values]
     Cache-Control = "public, max-age=86400"
 
+# ── Apex /app and /app/* are a footgun: the web OAuth redirect targets the bare
+#    origin (window.location.host), so signing in from playparty.space/app/ sends
+#    the callback to the marketing root and the session is dropped. Force every
+#    apex /app visit onto the app's OWN origin, where the redirect resolves to the
+#    app and sign-in completes. Apex-host-specific so it never matches — or loops
+#    on — app.playparty.space; force=true so it wins over the real /app/ dir; and
+#    placed before the host-agnostic "/app/*" SPA rule below so it takes priority. ──
+[[redirects]]
+  from = "https://playparty.space/app"
+  to = "https://app.playparty.space/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://playparty.space/app/*"
+  to = "https://app.playparty.space/:splat"
+  status = 301
+  force = true
+
 # ── app.playparty.space → serve the compiled web app at the subdomain ROOT.
 #    Same Netlify site as the apex (app.playparty.space is an added domain
 #    alias). This host-only rewrite maps every request on that host into the
