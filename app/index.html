@@ -51,6 +51,7 @@
     window.__pp_lk_activeSpeakers = {};
     window.__pp_lk_videoBindings = window.__pp_lk_videoBindings || {};
     window.__pp_lk_lastCameraError = '';
+    window.__pp_lk_lastMicError = '';
     window.__pp_lk_pendingCamera = null;
     window.__pp_lk_pendingMic = null;
 
@@ -92,11 +93,12 @@
             }
             if (window.__pp_lk_pendingMic !== null) {
                 var wantMic = window.__pp_lk_pendingMic; window.__pp_lk_pendingMic = null;
-                try { await room.localParticipant.setMicrophoneEnabled(wantMic); } catch (e) { console.error('[PP-LK] flush mic failed', e); }
+                try { await room.localParticipant.setMicrophoneEnabled(wantMic); }
+                catch (e) { window.__pp_lk_lastMicError = (e && e.name ? e.name + ': ' : '') + (e && e.message ? e.message : 'mic failed'); }
             }
             console.log('[PP-LK] Connected to room');
             return true;
-        } catch (e) { console.error('[PP-LK] Connect failed:', e); return false; }
+        } catch (e) { console.error('[PP-LK] Connect failed:', e); throw e; }
     };
 
     window.__pp_lk_disconnect = async function() {
@@ -106,7 +108,11 @@
     window.__pp_lk_setMicEnabled = async function(enabled) {
         if (!window.__pp_lk_room) { window.__pp_lk_pendingMic = enabled; return false; }
         try { await window.__pp_lk_room.localParticipant.setMicrophoneEnabled(enabled); window.__pp_lk_pendingMic = null; return true; }
-        catch (e) { console.error('[PP-LK] setMicEnabled failed:', e); throw e; }
+        catch (e) {
+            console.error('[PP-LK] setMicEnabled failed:', e);
+            window.__pp_lk_lastMicError = (e && e.name ? e.name + ': ' : '') + (e && e.message ? e.message : 'mic failed');
+            throw e;
+        }
     };
 
     window.__pp_lk_setCameraEnabled = async function(enabled) {
