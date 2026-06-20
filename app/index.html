@@ -188,7 +188,10 @@
 
     window.__pp_lk_detachVideo = function(videoElement) {
         if (window.__pp_lk_videoBindings) Object.keys(window.__pp_lk_videoBindings).forEach(function(k) { window.__pp_lk_videoBindings[k].delete(videoElement); });
-        if (videoElement.srcObject) { videoElement.srcObject.getTracks().forEach(function(t) { t.stop(); }); videoElement.srcObject = null; }
+        // Detach the element WITHOUT stopping the track — LiveKit owns the track lifecycle
+        // (it stops tracks on camera-off / disconnect). Stopping here killed the LOCAL camera
+        // when a grid tile recycled on scroll, so scrolling back showed nothing.
+        if (videoElement.srcObject) videoElement.srcObject = null;
     };
 </script>
 
