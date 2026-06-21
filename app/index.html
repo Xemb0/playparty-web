@@ -43,6 +43,35 @@
 <body>
 <div id="ComposeTarget"></div>
 
+<!-- First-load splash: shown immediately while the ~5 MB (brotli) wasm downloads +
+     compiles + Compose paints its first frame, then hidden by signalWasmLoaded() from
+     Kotlin main(). Without it the whole cold-load is a blank black screen. -->
+<div id="loading" style="display:flex;justify-content:center;align-items:center;height:100vh;height:100dvh;width:100%;position:fixed;top:0;left:0;z-index:9999;background:#0D0D1A;color:#fff;font-family:system-ui,-apple-system,Roboto,sans-serif;">
+  <div style="text-align:center;">
+    <div style="width:46px;height:46px;border:4px solid #2A2A3F;border-top:4px solid #22D3EE;border-radius:50%;animation:pp-spin 0.9s linear infinite;margin:0 auto 16px;"></div>
+    <p style="margin:0;opacity:0.85;font-size:14px;letter-spacing:0.4px;">Loading PlayParty…</p>
+  </div>
+</div>
+<style>@keyframes pp-spin{to{transform:rotate(360deg)}}</style>
+<script>
+  // If the wasm never boots (old browser without WasmGC, blocked CDN, dead connection),
+  // swap the spinner for an actionable error instead of spinning forever.
+  window.__pp_wasm_loaded = false;
+  window.addEventListener('error', function(e){ if(!window.__pp_first_error) window.__pp_first_error = (e.error && (e.error.stack||e.error.message)) || e.message; });
+  window.addEventListener('unhandledrejection', function(e){ if(!window.__pp_first_error) window.__pp_first_error = (e.reason && (e.reason.stack||e.reason.message)) || String(e.reason); });
+  setTimeout(function(){
+    if (window.__pp_wasm_loaded) return;
+    var l = document.getElementById('loading'); if (!l) return;
+    var msg = window.__pp_first_error ? String(window.__pp_first_error)
+      : (typeof WebAssembly === 'undefined' ? 'WebAssembly is not available in this browser.'
+      : 'The app did not load within 60s. Use a recent browser (Chrome 119+, Firefox 120+, Safari 18.4+) and check your connection.');
+    l.innerHTML = '<div style="text-align:center;max-width:620px;padding:24px;">'
+      + '<h2 style="margin:0 0 10px;">PlayParty couldn\'t start</h2>'
+      + '<p style="color:#f87171;font:13px/1.5 ui-monospace,monospace;white-space:pre-wrap;text-align:left;">' + msg + '</p>'
+      + '<button onclick="location.reload()" style="margin-top:16px;background:#22D3EE;color:#04121a;border:0;padding:10px 22px;border-radius:8px;font-weight:700;cursor:pointer;">Retry</button></div>';
+  }, 60000);
+</script>
+
 <!-- LiveKit Client JS SDK (UMD global `LivekitClient`) — loaded BEFORE the wasm app so the
      __pp_lk_* bridge globals exist before Kotlin init. Adapted from WatchParty's web LiveKit. -->
 <script src="https://unpkg.com/livekit-client@2.17.3/dist/livekit-client.umd.js"></script>
@@ -63,7 +92,7 @@
         if (!els || els.size === 0) return;
         participant.videoTrackPublications.forEach(function(pub) {
             if (pub.track) {
-                els.forEach(function(el) { try { pub.track.attach(el); } catch (e) { console.error('[PP-LK] attach failed', e); } });
+                els.forEach(function(el) { try { pub.track.attach(el); el.muted = true; var pr = el.play(); if (pr && pr.catch) pr.catch(function(){}); } catch (e) { console.error('[PP-LK] attach failed', e); } });
             }
         });
     }
@@ -182,7 +211,7 @@
             ? window.__pp_lk_room.localParticipant
             : window.__pp_lk_room.remoteParticipants.get(identity);
         if (!participant) return true;
-        participant.videoTrackPublications.forEach(function(pub) { if (pub.track) { try { pub.track.attach(videoElement); } catch (e) { console.error('[PP-LK] attach', e); } } });
+        participant.videoTrackPublications.forEach(function(pub) { if (pub.track) { try { pub.track.attach(videoElement); videoElement.muted = true; var pr = videoElement.play(); if (pr && pr.catch) pr.catch(function(){}); } catch (e) { console.error('[PP-LK] attach', e); } } });
         return true;
     };
 
