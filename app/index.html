@@ -83,6 +83,10 @@
     window.__pp_lk_lastMicError = '';
     window.__pp_lk_pendingCamera = null;
     window.__pp_lk_pendingMic = null;
+    // Last user intent for camera/mic — lets us restore them after a device lock /
+    // tab suspend ends the tracks (see the visibilitychange handler below).
+    window.__pp_lk_wantCamera = false;
+    window.__pp_lk_wantMic = false;
 
     // identity -> Set<HTMLVideoElement>. A renderer registers its <video> BEFORE the track may
     // exist; room events re-attach when it lands. Attaching once at mount silently no-ops otherwise.
@@ -135,6 +139,7 @@
     };
 
     window.__pp_lk_setMicEnabled = async function(enabled) {
+        window.__pp_lk_wantMic = enabled;
         if (!window.__pp_lk_room) { window.__pp_lk_pendingMic = enabled; return false; }
         try { await window.__pp_lk_room.localParticipant.setMicrophoneEnabled(enabled); window.__pp_lk_pendingMic = null; return true; }
         catch (e) {
@@ -145,6 +150,7 @@
     };
 
     window.__pp_lk_setCameraEnabled = async function(enabled) {
+        window.__pp_lk_wantCamera = enabled;
         if (!window.__pp_lk_room) { window.__pp_lk_pendingCamera = enabled; return false; }
         try { await window.__pp_lk_room.localParticipant.setCameraEnabled(enabled); __pp_lk_tryAttachToBindings(window.__pp_lk_room.localParticipant); return true; }
         catch (e) {
@@ -222,6 +228,41 @@
         // when a grid tile recycled on scroll, so scrolling back showed nothing.
         if (videoElement.srcObject) videoElement.srcObject = null;
     };
+
+    // ── Wake/resume recovery ─────────────────────────────────────────────────
+    // A device lock / tab suspend (esp. mobile) ENDS the local camera & mic
+    // MediaStreamTracks; they don't auto-recover on unlock, so the user returns
+    // with a dead camera/mic. On resume, restart any local track the OS killed
+    // (permission is already granted → getUserMedia needs no gesture) + re-attach.
+    async function __pp_lk_handleResume() {
+        var room = window.__pp_lk_room;
+        if (!room) return;
+        var lp = room.localParticipant;
+        async function restore(pubs, wantOn, kind) {
+            if (!wantOn) return;
+            var pub = null;
+            pubs.forEach(function(p) { if (p.source === kind) pub = p; });
+            var mst = pub && pub.track && pub.track.mediaStreamTrack;
+            if (mst && mst.readyState !== 'ended') return; // still alive — leave it
+            try {
+                if (pub && pub.track && pub.track.restartTrack) { await pub.track.restartTrack(); }
+                else if (kind === 'camera') { await lp.setCameraEnabled(true); }
+                else { await lp.setMicrophoneEnabled(true); }
+                console.log('[PP-LK] resume: restored ' + kind);
+            } catch (e) {
+                console.error('[PP-LK] resume restore ' + kind + ' failed', e);
+                if (kind === 'camera') window.__pp_lk_lastCameraError = (e && e.message) || 'camera restore failed';
+                else window.__pp_lk_lastMicError = (e && e.message) || 'mic restore failed';
+            }
+        }
+        await restore(lp.videoTrackPublications, window.__pp_lk_wantCamera, 'camera');
+        await restore(lp.audioTrackPublications, window.__pp_lk_wantMic, 'microphone');
+        __pp_lk_tryAttachToBindings(lp);
+    }
+    document.addEventListener('visibilitychange', function() {
+        // Delay so a reconnecting room/WS settles before we touch the tracks.
+        if (document.visibilityState === 'visible') setTimeout(function() { __pp_lk_handleResume(); }, 500);
+    });
 </script>
 
 <script src="playparty.js"></script>
