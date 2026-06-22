@@ -1,471 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PlayParty — Party Games With Friends, Over Live Video</title>
-    <meta name="description" content="Play hilarious social party games — Imposter, Corp &amp; Theft, Abracadabra and more — with friends over live video &amp; voice. Just share a room code." />
-    <link rel="icon" type="image/png" href="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/marketing/playparty/playparty_logo.png" />
-    <meta property="og:title" content="PlayParty — Party Games With Friends, Over Live Video" />
-    <meta property="og:description" content="Imposter, Corp &amp; Theft, Abracadabra and more. Play with your friends over live video. Just share a room code." />
-    <meta property="og:image" content="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/marketing/playparty/feature_graphic.png" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://playparty.space/" />
-    <link rel="canonical" href="https://playparty.space/" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7821269051534446"
-         crossorigin="anonymous"></script>
-    <style>
-      @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-20px); }
-      }
-      .float-animation { animation: float 6s ease-in-out infinite; }
-      .gradient-text {
-        background: linear-gradient(45deg, #8b5cf6, #ec4899, #f59e0b);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-      .glow-effect { box-shadow: 0 0 24px rgba(139, 92, 246, 0.35); }
-      .game-grid { background: linear-gradient(45deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1)); }
-      .wordmark .play { color: #d946ef; }
-      .wordmark .party { color: #facc15; }
-    </style>
-  </head>
-  <body class="bg-gray-900 text-white overflow-x-hidden">
-    <!-- Hero Section -->
-    <section class="min-h-screen flex flex-col lg:flex-row items-center justify-between px-6 py-16 lg:px-20 bg-gradient-to-br from-purple-900 via-fuchsia-900 to-indigo-900 relative">
-      <div class="absolute inset-0 overflow-hidden">
-        <div class="absolute top-20 left-10 w-32 h-32 bg-fuchsia-500/20 rounded-full blur-xl float-animation"></div>
-        <div class="absolute bottom-20 right-10 w-40 h-40 bg-amber-400/20 rounded-full blur-xl float-animation" style="animation-delay: -2s;"></div>
-        <div class="absolute top-1/2 left-1/3 w-24 h-24 bg-purple-500/20 rounded-full blur-xl float-animation" style="animation-delay: -4s;"></div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PlayParty — Party Games With Friends, Over Live Video</title>
+  <meta name="description" content="Spin up a room, share the link, and play quick multiplayer party games — Imposter, Guess It, Lucky Dice and the chaotic Collector grid — with friends over live video &amp; voice.">
+  <link rel="icon" type="image/svg+xml" href="playparty-icon.svg">
+  <link rel="apple-touch-icon" href="playparty-icon.svg">
+  <meta name="theme-color" content="#0B0A18">
+  <meta property="og:title" content="PlayParty — Party Games With Friends, Over Live Video">
+  <meta property="og:description" content="Imposter, Guess It, Lucky Dice and Collector. Play with your friends over live video. Just share a room code.">
+  <meta property="og:image" content="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/marketing/playparty/feature_graphic.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://playparty.space/">
+  <link rel="canonical" href="https://playparty.space/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7821269051534446" crossorigin="anonymous"></script>
+
+  <style>
+    body { margin:0; }
+    html { scroll-behavior:smooth; }
+    * { -webkit-font-smoothing:antialiased; box-sizing:border-box; }
+    ::selection { background:#A855F7; color:#fff; }
+    a, button { transition:filter .15s ease, transform .15s ease, background .15s ease, border-color .15s ease, color .15s ease; }
+    .pp-cta:hover { filter:brightness(1.08); }
+    .pp-cta-lift:hover { filter:brightness(1.08); transform:translateY(-2px); }
+    .pp-ghost:hover { background:rgba(255,255,255,0.12) !important; }
+    .pp-nav:hover { color:#fff !important; }
+    .pp-store:hover { border-color:rgba(255,255,255,0.4) !important; }
+    .pp-card:hover { border-color:rgba(168,85,247,0.5) !important; }
+    .pp-white:hover { filter:brightness(0.92); }
+  </style>
+</head>
+<body>
+
+<div style="background:#0B0A18; color:#fff; font-family:'Plus Jakarta Sans',system-ui,sans-serif; overflow-x:hidden; position:relative;">
+
+  <!-- ambient glows -->
+  <div style="position:absolute; top:-260px; left:50%; transform:translateX(-50%); width:1300px; height:1000px; background:radial-gradient(circle, rgba(124,47,247,0.30), transparent 60%); pointer-events:none;"></div>
+  <div style="position:absolute; top:600px; right:-200px; width:700px; height:700px; background:radial-gradient(circle, rgba(52,211,153,0.12), transparent 60%); pointer-events:none;"></div>
+
+  <!-- ============ NAV ============ -->
+  <header style="position:sticky; top:0; z-index:50; backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); background:rgba(11,10,24,0.72); border-bottom:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:1120px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:20px;">
+      <a href="#top" style="display:flex; align-items:center; gap:11px; text-decoration:none;">
+        <img src="playparty-icon.svg" alt="PlayParty" style="width:38px; height:38px; border-radius:10px; box-shadow:0 4px 14px rgba(124,47,247,0.45);">
+        <span style="font-size:19px; font-weight:800; color:#fff; letter-spacing:-0.01em;">PlayParty</span>
+        <span style="font-size:10px; font-weight:800; letter-spacing:0.06em; color:#34D399; background:rgba(52,211,153,0.14); border:1px solid rgba(52,211,153,0.3); border-radius:6px; padding:3px 7px;">BETA</span>
+      </a>
+      <nav style="margin-left:auto; display:flex; align-items:center; gap:28px;">
+        <a href="#games" class="pp-nav" style="font-size:14.5px; font-weight:600; color:rgba(255,255,255,0.66); text-decoration:none;">Games</a>
+        <a href="#how" class="pp-nav" style="font-size:14.5px; font-weight:600; color:rgba(255,255,255,0.66); text-decoration:none;">How it works</a>
+        <a href="#platforms" class="pp-nav" style="font-size:14.5px; font-weight:600; color:rgba(255,255,255,0.66); text-decoration:none;">Platforms</a>
+      </nav>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <a href="#platforms" class="pp-store" style="display:flex; align-items:center; gap:8px; background:#000; border:1px solid rgba(255,255,255,0.2); border-radius:11px; padding:8px 13px; text-decoration:none;">
+          <svg viewBox="0 0 24 24" style="width:19px; height:19px; flex:none;"><path d="M16.4 12.7c0-2.2 1.8-3.2 1.9-3.3-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.6.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.5 0-2.8.8-3.5 2.2-1.5 2.6-.4 6.4 1.1 8.5.7 1 1.5 2.2 2.6 2.1 1-.04 1.4-.7 2.7-.7 1.2 0 1.6.7 2.7.66 1.1-.02 1.8-1 2.5-2 .8-1.2 1.1-2.3 1.1-2.4-.02-.01-2.1-.81-2.1-3.16z" fill="#fff"></path><path d="M14.6 6.1c.6-.7 1-1.7.9-2.7-.9.04-1.9.6-2.5 1.3-.5.6-1 1.6-.9 2.6 1 .07 1.9-.5 2.5-1.2z" fill="#fff"></path></svg>
+          <span style="display:flex; flex-direction:column; line-height:1.1;"><span style="font-size:8px; font-weight:600; color:rgba(255,255,255,0.6); letter-spacing:0.02em;">Download on the</span><span style="font-size:13px; font-weight:800; color:#fff;">App Store</span></span>
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.playparty.app" class="pp-store" style="display:flex; align-items:center; gap:8px; background:#000; border:1px solid rgba(255,255,255,0.2); border-radius:11px; padding:8px 13px; text-decoration:none;">
+          <svg viewBox="0 0 24 24" style="width:19px; height:19px; flex:none;"><path d="M5 10.5a1.3 1.3 0 0 1 1.3 1.3v5.4A1.3 1.3 0 1 1 3.7 17.2v-5.4A1.3 1.3 0 0 1 5 10.5zm14 0a1.3 1.3 0 0 1 1.3 1.3v5.4a1.3 1.3 0 1 1-2.6 0v-5.4A1.3 1.3 0 0 1 19 10.5zM7 10.2h10v7.6a1.1 1.1 0 0 1-1.1 1.1h-1v2.3a1.3 1.3 0 1 1-2.6 0v-2.3h-1.6v2.3a1.3 1.3 0 1 1-2.6 0v-2.3h-1A1.1 1.1 0 0 1 7 17.8zM12 3.2c2.9 0 5.3 1.8 5.6 4.2H6.4C6.7 5 9.1 3.2 12 3.2zm-2.4 2a.7.7 0 1 0 0-1.4.7.7 0 0 0 0 1.4zm4.8 0a.7.7 0 1 0 0-1.4.7.7 0 0 0 0 1.4z" fill="#34D399"></path></svg>
+          <span style="display:flex; flex-direction:column; line-height:1.1;"><span style="font-size:8px; font-weight:600; color:rgba(255,255,255,0.6); letter-spacing:0.02em;">GET IT ON</span><span style="font-size:13px; font-weight:800; color:#fff;">Google Play</span></span>
+        </a>
       </div>
+      <a href="https://app.playparty.space/?action=createRoom" class="pp-cta" style="display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg,#A855F7,#FF4D9A); color:#fff; font-weight:700; font-size:14.5px; border-radius:12px; padding:11px 20px; text-decoration:none; box-shadow:0 8px 22px rgba(168,85,247,0.4);">Create Room</a>
+    </div>
+  </header>
 
-      <div class="lg:w-1/2 text-center lg:text-left relative z-10">
-        <div class="mb-6">
-          <div class="wordmark text-4xl font-black tracking-tight"><span class="play">Play</span><span class="party">Party</span></div>
+  <!-- ============ HERO ============ -->
+  <section id="top" style="position:relative; max-width:1120px; margin:0 auto; padding:80px 24px 70px; display:flex; gap:56px; align-items:center; flex-wrap:wrap;">
+    <div style="flex:1 1 440px; min-width:320px;">
+      <div style="display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:#C9A8FF; background:rgba(168,85,247,0.12); border:1px solid rgba(168,85,247,0.28); border-radius:999px; padding:7px 14px; margin-bottom:22px;">🎉 Party games, over video</div>
+      <h1 style="font-size:58px; line-height:1.04; font-weight:800; letter-spacing:-0.025em; margin:0 0 18px; text-wrap:balance;">Turn any call into a <span style="background:linear-gradient(120deg,#A855F7,#FF4D9A,#FB923C); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;">game night.</span></h1>
+      <p style="font-size:18.5px; line-height:1.55; color:rgba(255,255,255,0.66); margin:0 0 32px; max-width:520px;">Spin up a room, drop the link in your group chat, and play quick multiplayer games together on video &amp; audio — imposter, dice, guessing and the chaotic Collector grid.</p>
+      <div style="display:flex; gap:18px; flex-wrap:wrap; align-items:center;">
+        <a href="https://app.playparty.space/?action=createRoom" class="pp-cta-lift" style="display:inline-flex; align-items:center; gap:16px; background:linear-gradient(135deg,#A855F7,#FF4D9A); color:#fff; font-weight:800; font-size:34px; letter-spacing:-0.01em; border-radius:24px; padding:30px 56px; text-decoration:none; box-shadow:0 24px 60px rgba(168,85,247,0.5);">Create a Room →</a>
+        <a href="#how" class="pp-ghost" style="display:inline-flex; align-items:center; gap:9px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); color:#fff; font-weight:700; font-size:16.5px; border-radius:14px; padding:15px 24px; text-decoration:none;">See how it works</a>
+      </div>
+      <div style="display:flex; align-items:center; gap:18px; margin-top:26px; font-size:13.5px; color:rgba(255,255,255,0.5); font-weight:600;">
+        <span>Free to play</span><span style="opacity:.4;">•</span><span>No download on web</span><span style="opacity:.4;">•</span><span>2–10 friends</span>
+      </div>
+    </div>
+
+    <!-- room preview -->
+    <div style="flex:1 1 380px; min-width:320px; display:flex; justify-content:center;">
+      <div style="width:380px; background:linear-gradient(165deg,#1c1640,#120f26); border:1px solid rgba(255,255,255,0.1); border-radius:24px; padding:18px; box-shadow:0 30px 80px rgba(0,0,0,0.55); position:relative;">
+        <div style="display:flex; align-items:center; gap:9px; margin-bottom:15px;">
+          <span style="width:9px; height:9px; border-radius:50%; background:#FF4D4D; box-shadow:0 0 8px #FF4D4D;"></span>
+          <span style="font-size:13px; font-weight:700; color:#fff;">PARTY-7KQ2</span>
+          <span style="margin-left:auto; font-size:12px; font-weight:600; color:rgba(255,255,255,0.5);">4 playing</span>
         </div>
-
-        <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-          <span class="gradient-text">Party Games,</span>
-          <br />
-          <span class="text-white">Together</span>
-        </h1>
-
-        <p class="text-xl lg:text-2xl text-gray-300 mb-8 leading-relaxed">
-          Imposter, Corp &amp; Theft, Abracadabra and more — play hilarious social games with your friends over live video &amp; voice. Just share a room code and start the chaos.
-        </p>
-
-        <div class="bg-white/[0.04] backdrop-blur-xl rounded-2xl p-6 mb-8 border border-white/10 shadow-2xl">
-          <div class="flex items-center justify-between mb-5">
-            <h3 class="text-xs font-bold tracking-[0.2em] text-gray-400 uppercase">Available on</h3>
-            <span class="text-[11px] font-semibold text-green-400/90 flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span> Live
-            </span>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:11px;">
+          <div style="aspect-ratio:1.25; border-radius:14px; background:linear-gradient(160deg,#7C2FF7,#4d18a8); position:relative; overflow:hidden; padding:10px; display:flex; flex-direction:column; justify-content:flex-end;">
+            <span style="position:absolute; top:50%; left:50%; transform:translate(-50%,-58%); width:46px; height:46px; border-radius:50%; background:rgba(255,255,255,0.9); color:#7C2FF7; font-weight:800; font-size:19px; display:flex; align-items:center; justify-content:center;">M</span>
+            <span style="font-size:12px; font-weight:700; color:#fff; z-index:1;">Maya 🎤</span>
           </div>
-
-          <div class="grid grid-cols-3 gap-3 mb-6">
-            <!-- Android -->
-            <div class="flex flex-col items-center gap-2 rounded-xl py-4 bg-white/[0.03] border border-white/10 hover:border-[#3DDC84]/50 transition-colors">
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="#3DDC84"><path d="M17.523 15.341a1.001 1.001 0 1 1 0-2.002 1.001 1.001 0 0 1 0 2.002m-11.046 0a1.001 1.001 0 1 1 0-2.002 1.001 1.001 0 0 1 0 2.002m11.405-6.02 1.997-3.46a.416.416 0 0 0-.152-.567.416.416 0 0 0-.568.152l-2.022 3.503a12.331 12.331 0 0 0-5.137-1.103c-1.84 0-3.583.398-5.138 1.103L4.842 4.946a.416.416 0 0 0-.568-.152.416.416 0 0 0-.152.567l1.997 3.46C2.687 11.07.605 14.32.605 18.073h22.79c0-3.752-2.082-7.003-5.513-8.752"/></svg>
-              <div class="text-center leading-tight">
-                <div class="text-[13px] font-semibold text-white">Android</div>
-                <div class="text-[10px] text-green-400/80 font-medium">Live now</div>
-              </div>
-            </div>
-            <!-- iOS / Apple -->
-            <div class="flex flex-col items-center gap-2 rounded-xl py-4 bg-white/[0.03] border border-blue-400/30 hover:border-blue-400/60 transition-colors relative overflow-hidden">
-              <span class="absolute top-1.5 right-1.5 text-[8px] font-bold tracking-wider text-blue-300 bg-blue-500/20 px-1.5 py-0.5 rounded">BETA</span>
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
-              <div class="text-center leading-tight">
-                <div class="text-[13px] font-semibold text-white">iOS</div>
-                <div class="text-[10px] text-blue-300 font-medium">Beta open</div>
-              </div>
-            </div>
-            <!-- Web -->
-            <a href="https://app.playparty.space/" class="flex flex-col items-center gap-2 rounded-xl py-4 bg-white/[0.03] border border-white/10 hover:border-purple-400/50 transition-colors cursor-pointer">
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="1.6"><circle cx="12" cy="12" r="9.5"/><ellipse cx="12" cy="12" rx="4" ry="9.5"/><path d="M2.5 12h19M4 7h16M4 17h16"/></svg>
-              <div class="text-center leading-tight">
-                <div class="text-[13px] font-semibold text-white">Web</div>
-                <div class="text-[10px] text-purple-300/80 font-medium">In browser</div>
-              </div>
-            </a>
+          <div style="aspect-ratio:1.25; border-radius:14px; background:linear-gradient(160deg,#1f9e63,#117a47); position:relative; overflow:hidden; padding:10px; display:flex; flex-direction:column; justify-content:flex-end;">
+            <span style="position:absolute; top:50%; left:50%; transform:translate(-50%,-58%); width:46px; height:46px; border-radius:50%; background:rgba(255,255,255,0.9); color:#1f9e63; font-weight:800; font-size:19px; display:flex; align-items:center; justify-content:center;">L</span>
+            <span style="font-size:12px; font-weight:700; color:#fff; z-index:1;">Leo 😂</span>
           </div>
-
-          <div class="flex flex-wrap gap-2">
-            <span class="inline-flex items-center gap-1.5 text-xs text-gray-300 bg-white/[0.05] border border-white/10 rounded-full px-3 py-1.5">
-              <svg class="w-3.5 h-3.5 text-purple-300" viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11l-4 4z"/></svg>
-              Live video &amp; voice
-            </span>
-            <span class="inline-flex items-center gap-1.5 text-xs text-gray-300 bg-white/[0.05] border border-white/10 rounded-full px-3 py-1.5">
-              <svg class="w-3.5 h-3.5 text-pink-300" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              5 party games
-            </span>
-            <span class="inline-flex items-center gap-1.5 text-xs text-gray-300 bg-white/[0.05] border border-white/10 rounded-full px-3 py-1.5">
-              <svg class="w-3.5 h-3.5 text-amber-300" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h10v2H4z"/></svg>
-              Just share a code
-            </span>
+          <div style="aspect-ratio:1.25; border-radius:14px; background:linear-gradient(160deg,#e07a2c,#b65617); position:relative; overflow:hidden; padding:10px; display:flex; flex-direction:column; justify-content:flex-end;">
+            <span style="position:absolute; top:50%; left:50%; transform:translate(-50%,-58%); width:46px; height:46px; border-radius:50%; background:rgba(255,255,255,0.9); color:#e07a2c; font-weight:800; font-size:19px; display:flex; align-items:center; justify-content:center;">R</span>
+            <span style="font-size:12px; font-weight:700; color:#fff; z-index:1;">Ravi 🤔</span>
+          </div>
+          <div style="aspect-ratio:1.25; border-radius:14px; background:linear-gradient(160deg,#2b96d6,#1a6ba8); position:relative; overflow:hidden; padding:10px; display:flex; flex-direction:column; justify-content:flex-end;">
+            <span style="position:absolute; top:50%; left:50%; transform:translate(-50%,-58%); width:46px; height:46px; border-radius:50%; background:rgba(255,255,255,0.9); color:#2b96d6; font-weight:800; font-size:19px; display:flex; align-items:center; justify-content:center;">Z</span>
+            <span style="font-size:12px; font-weight:700; color:#fff; z-index:1;">Zoe 🥳</span>
           </div>
         </div>
-
-        <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
-          <a href="files/playparty.apk" class="bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-700 hover:to-purple-700 px-8 py-4 rounded-full font-bold text-white transform hover:scale-105 transition-all duration-300 glow-effect" download>
-            📱 Download Android APK
-          </a>
-          <a href="https://play.google.com/store/apps/details?id=com.playparty.app" class="bg-gray-800 hover:bg-gray-700 px-8 py-4 rounded-full font-bold text-white border border-gray-600 transform hover:scale-105 transition-all duration-300">
-            📦 Google Play Store
-          </a>
-        </div>
-
-        <div class="mt-8 text-center lg:text-left">
-          <p class="text-gray-400 text-sm">🎉 Bring your friends — game night, anywhere.</p>
-          <p class="text-gray-500 text-xs mt-3">
-            By installing or signing in to PlayParty you agree to our
-            <a href="terms-of-service.html" class="text-purple-400 hover:text-purple-300 underline underline-offset-2">Terms of Service</a>
-            and
-            <a href="privacy-policy.html" class="text-purple-400 hover:text-purple-300 underline underline-offset-2">Privacy Policy</a>.
-          </p>
+        <div style="margin-top:13px; display:flex; align-items:center; gap:10px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:12px 14px;">
+          <span style="font-size:22px;">🎭</span>
+          <div>
+            <div style="font-size:13.5px; font-weight:700; color:#fff;">Now playing · Imposter</div>
+            <div style="font-size:12px; color:rgba(255,255,255,0.55);">Round 2 · find the faker</div>
+          </div>
+          <span style="margin-left:auto; font-size:11px; font-weight:800; color:#0d0a1a; background:#FFD24A; border-radius:7px; padding:5px 9px;">VOTE</span>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Mock lobby -->
-      <div class="lg:w-1/2 mt-16 lg:mt-0 flex justify-center relative z-10">
-        <div class="relative">
-          <div class="absolute inset-0 bg-gradient-to-r from-fuchsia-500/30 to-amber-400/30 blur-3xl rounded-full"></div>
-          <div class="relative bg-gray-800 rounded-3xl p-8 shadow-2xl border border-gray-700/50 backdrop-blur-sm game-grid w-[340px]">
-            <div class="text-center mb-5">
-              <h3 class="text-2xl font-bold mb-1">Room <span class="gradient-text">7K2P</span></h3>
-              <p class="text-gray-400 text-sm">Find the Imposter · 5 players</p>
-            </div>
-            <!-- Video grid -->
-            <div class="grid grid-cols-3 gap-2 mb-5">
-              <div class="aspect-square rounded-xl bg-gradient-to-br from-fuchsia-600 to-purple-700 flex items-center justify-center text-lg font-black">A</div>
-              <div class="aspect-square rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-lg font-black">M</div>
-              <div class="aspect-square rounded-xl bg-gradient-to-br from-sky-500 to-indigo-600 flex items-center justify-center text-lg font-black">J</div>
-              <div class="aspect-square rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-lg font-black">R</div>
-              <div class="aspect-square rounded-xl bg-gradient-to-br from-rose-500 to-pink-600 flex items-center justify-center text-lg font-black">S</div>
-              <div class="aspect-square rounded-xl bg-white/5 border border-dashed border-white/20 flex items-center justify-center text-2xl text-white/40">+</div>
-            </div>
-            <!-- Game card -->
-            <div class="bg-black/40 rounded-xl p-4 mb-4 border border-white/10">
-              <div class="text-[11px] tracking-widest text-amber-300 font-bold mb-1">YOUR SECRET WORD</div>
-              <div class="text-2xl font-black">🍕 Pizza</div>
-              <div class="text-xs text-gray-400 mt-1">Everyone has it… except one of you.</div>
-            </div>
-            <button class="w-full bg-gradient-to-r from-fuchsia-600 to-amber-500 text-black font-black py-3 rounded-xl">Start round ✨</button>
-          </div>
-        </div>
+  <!-- ============ GAMES ============ -->
+  <section id="games" style="position:relative; max-width:1120px; margin:0 auto; padding:70px 24px;">
+    <div style="text-align:center; margin-bottom:46px;">
+      <div style="font-size:13px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#A855F7; margin-bottom:12px;">The games</div>
+      <h2 style="font-size:40px; font-weight:800; letter-spacing:-0.02em; margin:0 0 12px;">Four games. Endless chaos.</h2>
+      <p style="font-size:17px; color:rgba(255,255,255,0.6); margin:0 auto; max-width:560px; line-height:1.5;">Short rounds, big reactions. Jump between them without leaving the room.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(244px,1fr)); gap:20px;">
+
+      <div class="pp-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:24px;">
+        <svg viewBox="0 0 64 64" style="width:60px; height:60px; border-radius:15px; display:block; margin-bottom:18px; box-shadow:0 8px 20px rgba(0,0,0,0.3);">
+          <defs><linearGradient id="bgImp" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#A12BFF"/><stop offset="100%" stop-color="#6912C9"/></linearGradient></defs>
+          <rect width="64" height="64" rx="16" fill="url(#bgImp)"/>
+          <g transform="translate(32,33) scale(1.5)"><path d="M-13 -2 C-13 -9 -4 -9 -2 -4 C-1 -2.5 1 -2.5 2 -4 C4 -9 13 -9 13 -2 C13 5 6 8.5 2.5 5.8 C1 4.7 -1 4.7 -2.5 5.8 C-6 8.5 -13 5 -13 -2 Z" fill="#fff"/><ellipse cx="-6" cy="-1.4" rx="3" ry="2.2" fill="#231044" transform="rotate(-12 -6 -1.4)"/><ellipse cx="6" cy="-1.4" rx="3" ry="2.2" fill="#231044" transform="rotate(12 6 -1.4)"/></g>
+        </svg>
+        <div style="font-size:11.5px; font-weight:700; color:#C9A8FF; margin-bottom:6px;">4–10 players</div>
+        <h3 style="font-size:20px; font-weight:800; margin:0 0 8px;">Imposter</h3>
+        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0;">Everyone gets the secret word — except the impostor. Drop clues, sniff out the faker, and vote them out before they blend in for the win.</p>
       </div>
-    </section>
 
-    <!-- The Games -->
-    <section class="max-w-7xl mx-auto px-6 py-20">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl lg:text-5xl font-bold mb-6"><span class="gradient-text">The Games</span></h2>
-        <p class="text-xl text-gray-400 max-w-3xl mx-auto">Five fast, social games built for laughing on camera. More on the way.</p>
+      <div class="pp-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:24px;">
+        <svg viewBox="0 0 64 64" style="width:60px; height:60px; border-radius:15px; display:block; margin-bottom:18px; box-shadow:0 8px 20px rgba(0,0,0,0.3);">
+          <defs><linearGradient id="bgGus" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4DF03A"/><stop offset="100%" stop-color="#16A30C"/></linearGradient></defs>
+          <rect width="64" height="64" rx="16" fill="url(#bgGus)"/>
+          <g transform="translate(32,30) scale(1.55)"><path d="M-6 -8 C-6 -14.5 7 -14.5 6 -6 C5.2 -1 0 -1.8 0 3" fill="none" stroke="#fff" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="0" cy="10" r="2.7" fill="#fff"/></g>
+        </svg>
+        <div style="font-size:11.5px; font-weight:700; color:#7EE6A8; margin-bottom:6px;">2–10 players</div>
+        <h3 style="font-size:20px; font-weight:800; margin:0 0 8px;">Guess It</h3>
+        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0;">Describe it, draw it, or act it out on camera. First to shout the secret word scores — fastest fingers and wildest charades win.</p>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-7 rounded-2xl border border-gray-700/50 hover:border-fuchsia-500/50 transition-all">
-          <div class="text-4xl mb-3">🕵️</div>
-          <h3 class="text-xl font-bold mb-2">Imposter</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">Everyone shares a secret word — except the imposter. Discuss, vote, and unmask them before they blend in.</p>
-        </div>
-        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-7 rounded-2xl border border-gray-700/50 hover:border-amber-500/50 transition-all">
-          <div class="text-4xl mb-3">🚨</div>
-          <h3 class="text-xl font-bold mb-2">Corp &amp; Theft</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">A heist, a disguised thief, and a cop's interrogation. Bluff your way out — or grill the suspects to find the culprit.</p>
-        </div>
-        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-7 rounded-2xl border border-gray-700/50 hover:border-purple-500/50 transition-all">
-          <div class="text-4xl mb-3">🎩</div>
-          <h3 class="text-xl font-bold mb-2">Abracadabra</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">One magician hides a secret; everyone else races to guess it from cryptic hints before their lives run out.</p>
-        </div>
-        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-7 rounded-2xl border border-gray-700/50 hover:border-pink-500/50 transition-all">
-          <div class="text-4xl mb-3">🤥</div>
-          <h3 class="text-xl font-bold mb-2">Who Better Lie</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">Two lies and one truth. Sell your story, then spot which statement everyone else is faking.</p>
-        </div>
-        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-7 rounded-2xl border border-gray-700/50 hover:border-sky-500/50 transition-all">
-          <div class="text-4xl mb-3">➗</div>
-          <h3 class="text-xl font-bold mb-2">Math Rapid Fire</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">Lightning arithmetic rounds. Be the fastest brain in the room — no calculators, no mercy.</p>
-        </div>
-        <div class="bg-gradient-to-br from-fuchsia-900/40 to-amber-900/30 p-7 rounded-2xl border border-fuchsia-500/30 flex flex-col justify-center items-center text-center">
-          <div class="text-4xl mb-3">✨</div>
-          <h3 class="text-xl font-bold mb-2">More coming</h3>
-          <p class="text-gray-300 text-sm leading-relaxed">New party games drop regularly. Got an idea? Tell us.</p>
-        </div>
+
+      <div class="pp-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:24px;">
+        <svg viewBox="0 0 64 64" style="width:60px; height:60px; border-radius:15px; display:block; margin-bottom:18px; box-shadow:0 8px 20px rgba(0,0,0,0.3);">
+          <defs><linearGradient id="bgDic" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF9A3D"/><stop offset="100%" stop-color="#FF4D4D"/></linearGradient></defs>
+          <rect width="64" height="64" rx="16" fill="url(#bgDic)"/>
+          <g transform="translate(32,32)" fill="#fff"><circle cx="-9" cy="-9" r="3.4"/><circle cx="9" cy="-9" r="3.4"/><circle cx="0" cy="0" r="3.4"/><circle cx="-9" cy="9" r="3.4"/><circle cx="9" cy="9" r="3.4"/></g>
+        </svg>
+        <div style="font-size:11.5px; font-weight:700; color:#FFC182; margin-bottom:6px;">2–8 players</div>
+        <h3 style="font-size:20px; font-weight:800; margin:0 0 8px;">Lucky Dice</h3>
+        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0;">Roll, bank, or push your luck for one more throw. Race to the target score — but greed busts your turn. Pure tabletop tension.</p>
       </div>
-    </section>
 
-    <!-- Why PlayParty -->
-    <section class="max-w-7xl mx-auto px-6 py-12">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl lg:text-5xl font-bold mb-6"><span class="gradient-text">Why</span> PlayParty?</h2>
-        <p class="text-xl text-gray-400 max-w-3xl mx-auto">Game night energy, even when everyone's apart.</p>
+      <div class="pp-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:24px;">
+        <svg viewBox="0 0 64 64" style="width:60px; height:60px; border-radius:15px; display:block; margin-bottom:18px; box-shadow:0 8px 20px rgba(0,0,0,0.3);">
+          <defs><linearGradient id="bgCol" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#271861"/><stop offset="100%" stop-color="#0B0A18"/></linearGradient></defs>
+          <rect width="64" height="64" rx="16" fill="url(#bgCol)"/>
+          <g fill="rgba(255,255,255,0.10)"><rect x="9" y="9" width="13" height="13" rx="3"/><rect x="26" y="9" width="13" height="13" rx="3"/><rect x="43" y="9" width="12" height="13" rx="3"/><rect x="9" y="26" width="13" height="13" rx="3"/><rect x="43" y="26" width="12" height="13" rx="3"/><rect x="9" y="43" width="13" height="12" rx="3"/><rect x="26" y="43" width="13" height="12" rx="3"/></g>
+          <g transform="translate(32,30) scale(1.5)"><circle cx="-3" cy="1" r="3.2" fill="#fff"/><circle cx="0.4" cy="-1.3" r="3.5" fill="#fff"/><circle cx="3.5" cy="1.2" r="3" fill="#fff"/><circle cx="0.3" cy="2.6" r="3.2" fill="#fff"/><circle cx="4.7" cy="0.4" r="2.5" fill="#454a63"/><circle cx="5.4" cy="0" r="0.7" fill="#fff"/></g>
+        </svg>
+        <div style="font-size:11.5px; font-weight:700; color:#FFE08A; margin-bottom:6px;">2–6 players</div>
+        <h3 style="font-size:20px; font-weight:800; margin:0 0 8px;">Collector</h3>
+        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0;">Flip boxes on a grid to collect flowers, sheep and lions. Predators eat prey in your stash — biggest food chain wins. Watch for bombs.</p>
       </div>
-      <div class="grid lg:grid-cols-3 gap-8">
-        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700/50 hover:border-purple-500/50 transition-all group">
-          <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-fuchsia-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11l-4 4z"/></svg>
-          </div>
-          <h3 class="text-2xl font-bold mb-4">See &amp; hear everyone</h3>
-          <p class="text-gray-400 leading-relaxed">Built-in live video and voice put your friends' faces right in the game — every bluff, gasp and grin in real time.</p>
-        </div>
-        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700/50 hover:border-amber-500/50 transition-all group">
-          <div class="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M9 11H7v6h2v-6zm4 0h-2v6h2v-6zm4 0h-2v6h2v-6zm2.5-5H17V4.5C17 3.12 15.88 2 14.5 2h-5C8.12 2 7 3.12 7 4.5V6H4.5C3.67 6 3 6.67 3 7.5S3.67 9 4.5 9H6v9c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V9h1.5C20.33 9 21 8.33 21 7.5S20.33 6 19.5 6z"/></svg>
-          </div>
-          <h3 class="text-2xl font-bold mb-4">Start in seconds</h3>
-          <p class="text-gray-400 leading-relaxed">Create a room, share the short code, and you're playing. No accounts to wrangle, no setup, no waiting.</p>
-        </div>
-        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700/50 hover:border-green-500/50 transition-all group">
-          <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg>
-          </div>
-          <h3 class="text-2xl font-bold mb-4">Free to play</h3>
-          <p class="text-gray-400 leading-relaxed">Every game is free. Add up to a full table of friends and play as many rounds as you like.</p>
-        </div>
-        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700/50 hover:border-pink-500/50 transition-all group">
-          <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5C15 14.17 10.33 13 8 13zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-          </div>
-          <h3 class="text-2xl font-bold mb-4">Play with anyone</h3>
-          <p class="text-gray-400 leading-relaxed">Friends across the room or across the world — share a link and they jump straight into your table.</p>
-        </div>
-        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700/50 hover:border-blue-500/50 transition-all group">
-          <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-          </div>
-          <h3 class="text-2xl font-bold mb-4">Private rooms</h3>
-          <p class="text-gray-400 leading-relaxed">Rooms are private by default — only people with your code can join. Your game night stays yours.</p>
-        </div>
-        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700/50 hover:border-yellow-500/50 transition-all group">
-          <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-amber-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M4 6h18v2H4zm0 5h12v2H4zm0 5h18v2H4z"/></svg>
-          </div>
-          <h3 class="text-2xl font-bold mb-4">Cross-platform</h3>
-          <p class="text-gray-400 leading-relaxed">Android today, iOS in beta, and right in your browser — everyone joins from whatever device they've got.</p>
-        </div>
+
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section id="how" style="position:relative; max-width:1120px; margin:0 auto; padding:70px 24px;">
+    <div style="text-align:center; margin-bottom:46px;">
+      <div style="font-size:13px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#34D399; margin-bottom:12px;">How it works</div>
+      <h2 style="font-size:40px; font-weight:800; letter-spacing:-0.02em; margin:0 0 12px;">Three taps to chaos.</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px;">
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:30px 26px;">
+        <div style="width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg,#A855F7,#FF4D9A); display:flex; align-items:center; justify-content:center; font-size:19px; font-weight:800; margin-bottom:18px;">1</div>
+        <h3 style="font-size:19px; font-weight:800; margin:0 0 9px;">Create a room</h3>
+        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0;">Hit <strong style="color:#fff;">Create Room</strong> and you get a private room with a shareable link and code — no setup, no accounts needed to start.</p>
       </div>
-    </section>
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:30px 26px;">
+        <div style="width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg,#34D399,#1f9e63); display:flex; align-items:center; justify-content:center; font-size:19px; font-weight:800; margin-bottom:18px;">2</div>
+        <h3 style="font-size:19px; font-weight:800; margin:0 0 9px;">Friends join on video</h3>
+        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0;">They tap the link and hop in from any device with camera &amp; mic. See everyone live, react in real time, talk smack.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:30px 26px;">
+        <div style="width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg,#FB923C,#e0612c); display:flex; align-items:center; justify-content:center; font-size:19px; font-weight:800; margin-bottom:18px;">3</div>
+        <h3 style="font-size:19px; font-weight:800; margin:0 0 9px;">Pick a game &amp; play</h3>
+        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0;">Choose any of the four games, play a quick round, and rematch or swap games instantly — all without leaving the call.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Coming Soon -->
-    <section class="max-w-6xl mx-auto px-6 py-16">
-      <div class="bg-gradient-to-r from-fuchsia-900/50 to-amber-900/40 rounded-3xl p-12 text-center border border-fuchsia-500/20">
-        <h2 class="text-3xl lg:text-4xl font-bold mb-6">🚀 What's next</h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
-          <div class="bg-gray-800/50 rounded-xl p-4 backdrop-blur-sm">
-            <div class="text-2xl mb-2">📱</div>
-            <h4 class="font-semibold text-fuchsia-300">iOS App</h4>
-            <p class="text-sm text-gray-400 mt-1">iPhone &amp; iPad — in beta</p>
-          </div>
-          <a href="https://app.playparty.space/" class="bg-gradient-to-br from-purple-600/40 to-fuchsia-600/40 rounded-xl p-4 backdrop-blur-sm block hover:from-purple-600/60 hover:to-fuchsia-600/60 transition-all transform hover:scale-105 border border-purple-500/40">
-            <div class="text-2xl mb-2">🌐</div>
-            <h4 class="font-semibold text-purple-200">Launch Web App →</h4>
-            <p class="text-sm text-gray-300 mt-1">Play right in your browser</p>
-          </a>
-          <div class="bg-gray-800/50 rounded-xl p-4 backdrop-blur-sm">
-            <div class="text-2xl mb-2">🎲</div>
-            <h4 class="font-semibold text-amber-300">More games</h4>
-            <p class="text-sm text-gray-400 mt-1">New modes, regularly</p>
-          </div>
-          <div class="bg-gray-800/50 rounded-xl p-4 backdrop-blur-sm">
-            <div class="text-2xl mb-2">🏆</div>
-            <h4 class="font-semibold text-green-300">Leaderboards</h4>
-            <p class="text-sm text-gray-400 mt-1">Stats &amp; bragging rights</p>
-          </div>
+  <!-- ============ PLATFORMS ============ -->
+  <section id="platforms" style="position:relative; max-width:1120px; margin:0 auto; padding:70px 24px;">
+    <div style="text-align:center; margin-bottom:46px;">
+      <div style="font-size:13px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#FB923C; margin-bottom:12px;">Platforms</div>
+      <h2 style="font-size:40px; font-weight:800; letter-spacing:-0.02em; margin:0 0 12px;">Play on everything.</h2>
+      <p style="font-size:17px; color:rgba(255,255,255,0.6); margin:0 auto; max-width:560px; line-height:1.5;">The same room works across phones, tablets and the web — mix and match however your friends show up.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px;">
+
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:22px; padding:30px 26px; display:flex; flex-direction:column;">
+        <div style="width:52px; height:52px; border-radius:14px; background:rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+          <svg viewBox="0 0 24 24" style="width:26px; height:26px;"><path d="M16.4 12.7c0-2.2 1.8-3.2 1.9-3.3-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.6.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.5 0-2.8.8-3.5 2.2-1.5 2.6-.4 6.4 1.1 8.5.7 1 1.5 2.2 2.6 2.1 1-.04 1.4-.7 2.7-.7 1.2 0 1.6.7 2.7.66 1.1-.02 1.8-1 2.5-2 .8-1.2 1.1-2.3 1.1-2.4-.02-.01-2.1-.81-2.1-3.16z" fill="#fff"/><path d="M14.6 6.1c.6-.7 1-1.7.9-2.7-.9.04-1.9.6-2.5 1.3-.5.6-1 1.6-.9 2.6 1 .07 1.9-.5 2.5-1.2z" fill="#fff"/></svg>
         </div>
+        <h3 style="font-size:21px; font-weight:800; margin:0 0 9px;">iOS</h3>
+        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0 0 22px; flex:1;">A native iPhone &amp; iPad app with buttery 60fps video, haptic reactions and Sign in with Apple. Tap a shared link to jump straight into a room.</p>
+        <a href="https://app.playparty.space/?action=createRoom" class="pp-white" style="display:inline-flex; align-items:center; justify-content:center; gap:9px; background:#fff; color:#0B0A18; font-weight:700; font-size:14.5px; border-radius:12px; padding:13px 18px; text-decoration:none;">Play on web</a>
       </div>
-    </section>
 
-    <!-- iOS Beta / TestFlight signup -->
-    <section id="ios-beta" class="py-16 px-6">
-      <div class="max-w-2xl mx-auto text-center">
-        <div class="bg-gradient-to-br from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-3xl p-8 backdrop-blur-sm">
-          <div class="text-4xl mb-3">🍎</div>
-          <h2 class="text-3xl font-bold mb-2"><span class="gradient-text">iOS Beta</span> is open</h2>
-          <p class="text-gray-300 mb-6">Want PlayParty on your iPhone? Drop your Apple ID and we'll send you a TestFlight invite — all five games, live video &amp; voice included.</p>
-          <form id="beta-form" class="flex flex-col sm:flex-row gap-3 justify-center">
-            <input id="beta-apple-id" type="email" required placeholder="Your Apple ID (email)"
-                   class="flex-1 bg-gray-900/70 border border-gray-700 rounded-full px-5 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500" />
-            <button type="submit" id="beta-submit"
-                    class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-3 rounded-full font-bold text-white transform hover:scale-105 transition-all">
-              Request invite
-            </button>
-          </form>
-          <p id="beta-msg" class="text-sm mt-4 min-h-[1.25rem]"></p>
-          <p class="text-xs text-gray-500 mt-2">We only use your Apple ID to send the TestFlight invite. No spam, ever.</p>
+      <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:22px; padding:30px 26px; display:flex; flex-direction:column;">
+        <div style="width:52px; height:52px; border-radius:14px; background:rgba(52,211,153,0.14); display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+          <svg viewBox="0 0 24 24" style="width:26px; height:26px;"><path d="M5 10.5a1.3 1.3 0 0 1 1.3 1.3v5.4A1.3 1.3 0 1 1 3.7 17.2v-5.4A1.3 1.3 0 0 1 5 10.5zm14 0a1.3 1.3 0 0 1 1.3 1.3v5.4a1.3 1.3 0 1 1-2.6 0v-5.4A1.3 1.3 0 0 1 19 10.5zM7 10.2h10v7.6a1.1 1.1 0 0 1-1.1 1.1h-1v2.3a1.3 1.3 0 1 1-2.6 0v-2.3h-1.6v2.3a1.3 1.3 0 1 1-2.6 0v-2.3h-1A1.1 1.1 0 0 1 7 17.8zM12 3.2c2.9 0 5.3 1.8 5.6 4.2H6.4C6.7 5 9.1 3.2 12 3.2zm-2.4 2a.7.7 0 1 0 0-1.4.7.7 0 0 0 0 1.4zm4.8 0a.7.7 0 1 0 0-1.4.7.7 0 0 0 0 1.4z" fill="#34D399"/></svg>
         </div>
+        <h3 style="font-size:21px; font-weight:800; margin:0 0 9px;">Android</h3>
+        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0 0 22px; flex:1;">A native Android app on Google Play with a low-data mode for shaky connections. Runs great on any phone or tablet, old or new.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.playparty.app" class="pp-white" style="display:inline-flex; align-items:center; justify-content:center; gap:9px; background:#fff; color:#0B0A18; font-weight:700; font-size:14.5px; border-radius:12px; padding:13px 18px; text-decoration:none;">Get it on Google Play</a>
       </div>
-    </section>
 
-    <!-- Screenshot Gallery -->
-    <section class="py-16 px-6">
-      <div class="max-w-7xl mx-auto">
-        <h2 class="text-3xl font-bold text-center mb-8 gradient-text">Screenshots</h2>
-        <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
-      </div>
-    </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <!-- TestFlight signup → writes to PlayParty's Supabase project.
-         Insert-only RLS: anyone can submit, nobody can read the list. -->
-    <script>
-    (function () {
-      var BETA_URL = 'https://xjkdesdrdsudtkvnfkdq.supabase.co';
-      var BETA_KEY = 'sb_publishable_YPjLwZ9nIoSj8GzEyH44ig_vZhxDlBA';
-      var betaClient = window.supabase.createClient(BETA_URL, BETA_KEY);
-      var form = document.getElementById('beta-form');
-      var msg = document.getElementById('beta-msg');
-      var btn = document.getElementById('beta-submit');
-      form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        var appleId = document.getElementById('beta-apple-id').value.trim();
-        if (!appleId) return;
-        btn.disabled = true; btn.textContent = 'Sending…';
-        msg.textContent = ''; msg.className = 'text-sm mt-4 min-h-[1.25rem]';
-        var res = await betaClient.from('testflight_signups')
-          .insert({ apple_id: appleId, platform: 'ios', source: 'website' });
-        if (!res.error) {
-          msg.textContent = "✅ You're on the list! Watch your inbox for a TestFlight invite.";
-          msg.className = 'text-sm mt-4 min-h-[1.25rem] text-green-400';
-          form.reset();
-        } else if (res.error.code === '23505') {
-          msg.textContent = "✅ You're already registered — your invite is on the way.";
-          msg.className = 'text-sm mt-4 min-h-[1.25rem] text-green-400';
-          form.reset();
-        } else {
-          msg.textContent = '⚠️ Something went wrong. Please try again.';
-          msg.className = 'text-sm mt-4 min-h-[1.25rem] text-red-400';
-        }
-        btn.disabled = false; btn.textContent = 'Request invite';
-      });
-    })();
-    </script>
-    <!-- Screenshots from PlayParty's Supabase 'marketing' bucket. Missing files
-         are hidden gracefully so the section stays clean until assets are uploaded. -->
-    <script>
-    (function () {
-      var BASE = 'https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/marketing/playparty/';
-      var shots = ['1.png', '2.png', '3.png', '4.png', '5.png'].map(function (f, i) {
-        return { url: BASE + f, alt: 'PlayParty screenshot ' + (i + 1) };
-      });
-      var grid = document.getElementById('gallery-grid');
-      if (!grid) return;
-      grid.className = 'grid grid-cols-2 md:grid-cols-5 gap-4';
-      grid.innerHTML = shots.map(function (s, i) {
-        return '<div class="cursor-pointer group overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1" onclick="ppOpenShot(' + i + ')">'
-          + '<img src="' + s.url + '" alt="' + s.alt + '" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" onerror="this.closest(\'div\').style.display=\'none\'"></div>';
-      }).join('');
-
-      var lb = document.createElement('div');
-      lb.style.cssText = 'position:fixed;inset:0;z-index:99998;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.95);padding:24px;';
-      lb.innerHTML = '<button id="pp-lb-close" style="position:absolute;top:16px;right:20px;color:#fff;font-size:40px;background:none;border:0;cursor:pointer;">&times;</button>'
-        + '<button id="pp-lb-prev" style="position:absolute;left:16px;color:#fff;font-size:48px;background:none;border:0;cursor:pointer;">&lsaquo;</button>'
-        + '<img id="pp-lb-img" style="max-height:85vh;max-width:90vw;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.6);">'
-        + '<button id="pp-lb-next" style="position:absolute;right:16px;color:#fff;font-size:48px;background:none;border:0;cursor:pointer;">&rsaquo;</button>';
-      document.body.appendChild(lb);
-      var cur = 0;
-      function show(i) { cur = (i + shots.length) % shots.length; document.getElementById('pp-lb-img').src = shots[cur].url; }
-      window.ppOpenShot = function (i) { show(i); lb.style.display = 'flex'; };
-      function close() { lb.style.display = 'none'; }
-      lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
-      document.getElementById('pp-lb-close').onclick = close;
-      document.getElementById('pp-lb-prev').onclick = function () { show(cur - 1); };
-      document.getElementById('pp-lb-next').onclick = function () { show(cur + 1); };
-      document.addEventListener('keydown', function (e) {
-        if (lb.style.display !== 'flex') return;
-        if (e.key === 'Escape') close();
-        if (e.key === 'ArrowLeft') show(cur - 1);
-        if (e.key === 'ArrowRight') show(cur + 1);
-      });
-    })();
-    </script>
-
-    <!-- Footer -->
-    <footer class="bg-black/50 backdrop-blur-sm border-t border-gray-800 py-12">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center">
-          <div class="wordmark text-2xl font-black mb-6"><span class="play">Play</span><span class="party">Party</span></div>
-          <p class="text-gray-400 mb-6">© 2026 PlayParty by Imautotech — game night, anywhere.</p>
-          <div class="flex flex-wrap justify-center gap-6 text-sm">
-            <a href="/games/" class="text-purple-400 hover:text-purple-300 transition-colors">Games</a>
-            <a href="/faq.html" class="text-purple-400 hover:text-purple-300 transition-colors">FAQ</a>
-            <a href="/about.html" class="text-purple-400 hover:text-purple-300 transition-colors">About</a>
-            <a href="privacy-policy.html" class="text-purple-400 hover:text-purple-300 transition-colors">Privacy Policy</a>
-            <a href="terms-of-service.html" class="text-purple-400 hover:text-purple-300 transition-colors">Terms of Service</a>
-            <a href="contact.html" class="text-purple-400 hover:text-purple-300 transition-colors">Contact Us</a>
-            <a href="https://playparty.space/support/" class="text-purple-400 hover:text-purple-300 transition-colors">Help Center</a>
-            <a href="https://playparty.space/support/delete.html" class="text-purple-400 hover:text-purple-300 transition-colors">Delete Account</a>
-          </div>
-          <div class="mt-8 pt-6 border-t border-gray-800">
-            <p class="text-gray-500 text-sm">Made with ❤️ for game nights everywhere</p>
-          </div>
+      <div style="background:linear-gradient(165deg,rgba(124,47,247,0.18),rgba(255,77,154,0.08)); border:1px solid rgba(168,85,247,0.35); border-radius:22px; padding:30px 26px; display:flex; flex-direction:column;">
+        <div style="width:52px; height:52px; border-radius:14px; background:rgba(43,150,214,0.18); display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+          <svg viewBox="0 0 24 24" style="width:28px; height:28px;"><circle cx="12" cy="12" r="9" fill="none" stroke="#38BDF8" stroke-width="1.7"/><path d="M3 12h18M12 3c2.6 2.4 2.6 15.6 0 18M12 3c-2.6 2.4-2.6 15.6 0 18" fill="none" stroke="#38BDF8" stroke-width="1.7"/></svg>
         </div>
+        <div style="display:inline-flex; align-self:flex-start; font-size:10.5px; font-weight:800; letter-spacing:0.05em; color:#0d0a1a; background:#FFD24A; border-radius:6px; padding:3px 8px; margin-bottom:10px;">NO INSTALL</div>
+        <h3 style="font-size:21px; font-weight:800; margin:0 0 9px;">Web app</h3>
+        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.66); margin:0 0 22px; flex:1;">Start or join a room right in the browser — nothing to download. Share a link and friends are in within seconds. Best on a laptop for the big screen.</p>
+        <a href="https://app.playparty.space/?action=createRoom" class="pp-cta" style="display:inline-flex; align-items:center; justify-content:center; gap:9px; background:linear-gradient(135deg,#A855F7,#FF4D9A); color:#fff; font-weight:700; font-size:14.5px; border-radius:12px; padding:13px 18px; text-decoration:none; box-shadow:0 8px 22px rgba(168,85,247,0.4);">Open web app →</a>
       </div>
-    </footer>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-          anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) target.scrollIntoView({ behavior: 'smooth' });
-          });
-        });
-        window.addEventListener('scroll', () => {
-          const scrolled = window.pageYOffset;
-          document.querySelectorAll('.float-animation').forEach(el => {
-            el.style.transform = `translateY(${scrolled * 0.1}px)`;
-          });
-        });
-      });
-    </script>
+    </div>
+  </section>
 
-    <!-- Invite landing: ?roomId=XXXX shows a tap-to-open overlay that deep-links into the app. -->
-    <script>
-    (function () {
-      function getRoomId() {
-        return (new URLSearchParams(window.location.search).get('roomId') || '').trim();
-      }
-      var PLAY_URL = 'https://play.google.com/store/apps/details?id=com.playparty.app';
-      function buildIntent(roomId) {
-        return 'intent://join?roomId=' + encodeURIComponent(roomId)
-          + '#Intent;scheme=playparty;package=com.playparty.app;S.browser_fallback_url='
-          + encodeURIComponent(PLAY_URL) + ';end';
-      }
-      window.addEventListener('load', function () {
-        var roomId = getRoomId();
-        if (!roomId) return;
-        var isAndroid = /Android/i.test(navigator.userAgent);
-        var safeRoom = roomId.replace(/[^A-Za-z0-9_-]/g, '');
-        var ov = document.createElement('div');
-        ov.id = 'pp-invite-overlay';
-        ov.style.cssText = 'position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(120% 120% at 50% 0%,#3b0764 0%,#0b0b14 70%);';
-        ov.innerHTML =
-          '<div style="max-width:380px;width:100%;text-align:center;color:#fff;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;">'
-          + '<div style="font-size:13px;letter-spacing:.18em;color:#f0abfc;font-weight:700;">INVITED TO A GAME</div>'
-          + '<h1 style="font-size:26px;font-weight:800;margin:10px 0 4px;">Join the room</h1>'
-          + '<p style="color:#cbd5e1;font-size:14px;margin:0 0 18px;">Party games with friends, over live video.</p>'
-          + '<div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:8px 16px;margin-bottom:22px;">'
-          + '<span style="color:#94a3b8;font-size:12px;">ROOM</span>'
-          + '<span style="font-weight:800;letter-spacing:.12em;font-size:16px;">' + safeRoom + '</span>'
-          + '</div>'
-          + '<a id="pp-open-btn" href="#" style="display:block;background:linear-gradient(90deg,#c026d3,#f59e0b);color:#111;font-weight:800;font-size:16px;text-decoration:none;padding:15px;border-radius:14px;margin-bottom:12px;">Open in PlayParty</a>'
-          + '<a href="' + PLAY_URL + '" style="display:block;color:#cbd5e1;font-size:13px;text-decoration:none;">No app yet? Get it on Google Play</a>'
-          + '</div>';
-        document.body.appendChild(ov);
-        document.body.style.overflow = 'hidden';
-        document.getElementById('pp-open-btn').addEventListener('click', function (e) {
-          e.preventDefault();
-          window.location.href = isAndroid ? buildIntent(roomId) : PLAY_URL;
-        });
-      });
-    })();
-    </script>
-  </body>
+  <!-- ============ FINAL CTA ============ -->
+  <section style="position:relative; max-width:1120px; margin:0 auto; padding:30px 24px 90px;">
+    <div style="background:linear-gradient(135deg,#2a1657,#3a1a6e); border:1px solid rgba(168,85,247,0.4); border-radius:28px; padding:60px 40px; text-align:center; overflow:hidden; position:relative;">
+      <div style="position:absolute; top:-120px; left:50%; transform:translateX(-50%); width:600px; height:400px; background:radial-gradient(circle, rgba(255,77,154,0.25), transparent 65%); pointer-events:none;"></div>
+      <img src="playparty-icon.svg" alt="" style="width:72px; height:72px; border-radius:18px; margin:0 auto 22px; display:block; box-shadow:0 12px 36px rgba(124,47,247,0.5); position:relative;">
+      <h2 style="font-size:42px; font-weight:800; letter-spacing:-0.02em; margin:0 0 14px; position:relative;">Ready to start the party?</h2>
+      <p style="font-size:18px; color:rgba(255,255,255,0.72); margin:0 auto 30px; max-width:480px; position:relative;">Create a room now and send the link — your friends are one tap away.</p>
+      <a href="https://app.playparty.space/?action=createRoom" class="pp-white" style="display:inline-flex; align-items:center; gap:9px; background:#fff; color:#0B0A18; font-weight:800; font-size:17px; border-radius:14px; padding:17px 32px; text-decoration:none; box-shadow:0 14px 40px rgba(0,0,0,0.4); position:relative;">Create a Room 🎉</a>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="position:relative; border-top:1px solid rgba(255,255,255,0.07);">
+    <div style="max-width:1120px; margin:0 auto; padding:30px 24px; display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+      <img src="playparty-icon.svg" alt="" style="width:30px; height:30px; border-radius:8px;">
+      <span style="font-size:15px; font-weight:800;">PlayParty</span>
+      <span style="font-size:13px; color:rgba(255,255,255,0.4); margin-left:6px;">Game night, anywhere.</span>
+      <div style="margin-left:auto; display:flex; gap:22px; font-size:13.5px; color:rgba(255,255,255,0.5); font-weight:600; flex-wrap:wrap;">
+        <a href="#games" class="pp-nav" style="color:inherit; text-decoration:none;">Games</a>
+        <a href="#platforms" class="pp-nav" style="color:inherit; text-decoration:none;">Platforms</a>
+        <a href="privacy-policy.html" class="pp-nav" style="color:inherit; text-decoration:none;">Privacy</a>
+        <a href="terms-of-service.html" class="pp-nav" style="color:inherit; text-decoration:none;">Terms</a>
+        <a href="contact.html" class="pp-nav" style="color:inherit; text-decoration:none;">Contact</a>
+      </div>
+    </div>
+    <div style="max-width:1120px; margin:0 auto; padding:0 24px 28px; font-size:12.5px; color:rgba(255,255,255,0.3);">© 2026 PlayParty · Made for friends who can’t sit still.</div>
+  </footer>
+
+</div>
+
+<!-- Invite landing: ?roomId=XXXX shows a tap-to-open overlay that deep-links into the app. -->
+<script>
+(function () {
+  function getRoomId() {
+    return (new URLSearchParams(window.location.search).get('roomId') || '').trim();
+  }
+  var PLAY_URL = 'https://play.google.com/store/apps/details?id=com.playparty.app';
+  function buildIntent(roomId) {
+    return 'intent://join?roomId=' + encodeURIComponent(roomId)
+      + '#Intent;scheme=playparty;package=com.playparty.app;S.browser_fallback_url='
+      + encodeURIComponent(PLAY_URL) + ';end';
+  }
+  window.addEventListener('load', function () {
+    var roomId = getRoomId();
+    if (!roomId) return;
+    var isAndroid = /Android/i.test(navigator.userAgent);
+    var safeRoom = roomId.replace(/[^A-Za-z0-9_-]/g, '');
+    var ov = document.createElement('div');
+    ov.id = 'pp-invite-overlay';
+    ov.style.cssText = 'position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(120% 120% at 50% 0%,#3b0764 0%,#0b0b14 70%);';
+    ov.innerHTML =
+      '<div style="max-width:380px;width:100%;text-align:center;color:#fff;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;">'
+      + '<div style="font-size:13px;letter-spacing:.18em;color:#f0abfc;font-weight:700;">INVITED TO A GAME</div>'
+      + '<h1 style="font-size:26px;font-weight:800;margin:10px 0 4px;">Join the room</h1>'
+      + '<p style="color:#cbd5e1;font-size:14px;margin:0 0 18px;">Party games with friends, over live video.</p>'
+      + '<div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:8px 16px;margin-bottom:22px;">'
+      + '<span style="color:#94a3b8;font-size:12px;">ROOM</span>'
+      + '<span style="font-weight:800;letter-spacing:.12em;font-size:16px;">' + safeRoom + '</span>'
+      + '</div>'
+      + '<a id="pp-open-btn" href="#" style="display:block;background:linear-gradient(90deg,#c026d3,#f59e0b);color:#111;font-weight:800;font-size:16px;text-decoration:none;padding:15px;border-radius:14px;margin-bottom:12px;">Open in PlayParty</a>'
+      + '<a href="' + PLAY_URL + '" style="display:block;color:#cbd5e1;font-size:13px;text-decoration:none;">No app yet? Get it on Google Play</a>'
+      + '</div>';
+    document.body.appendChild(ov);
+    document.body.style.overflow = 'hidden';
+    document.getElementById('pp-open-btn').addEventListener('click', function (e) {
+      e.preventDefault();
+      window.location.href = isAndroid ? buildIntent(roomId) : PLAY_URL;
+    });
+  });
+})();
+</script>
+</body>
 </html>
