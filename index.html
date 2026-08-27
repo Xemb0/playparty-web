@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PlayParty — 12 Party Games, One Room</title>
-  <meta name="description" content="Create a room, invite your friends, and play 12 multiplayer party games together over live video and voice — instantly on web, iOS, and Android.">
+  <title>PlayParty — Friends, Live Rooms, and 9 Party Games</title>
+  <meta name="description" content="Build your profile, find friends and live rooms, then host or join 9 multiplayer party games on PlayParty.">
   <link rel="icon" type="image/svg+xml" href="playparty-icon.svg">
   <link rel="apple-touch-icon" href="playparty-icon.svg">
-  <meta name="theme-color" content="#0B0A18">
-  <meta property="og:title" content="PlayParty — 12 Party Games, One Room">
-  <meta property="og:description" content="Create or join a room and play 12 multiplayer party games together over live video. No download needed on web.">
+  <meta name="theme-color" content="#0D0B1A">
+  <meta property="og:title" content="PlayParty — Friends, Live Rooms, and 9 Party Games">
+  <meta property="og:description" content="Find friends and live rooms, or host your own. Nine multiplayer party games are ready to play on PlayParty.">
   <meta property="og:image" content="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/marketing/playparty/feature_graphic.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://playparty.space/">
@@ -17,7 +17,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- AdSense removed for policy compliance (no ads). -->
 
@@ -65,6 +65,7 @@
     .pp-game-tile div { position:absolute; z-index:1; inset:auto 18px 17px; }
     .pp-game-tile h3 { margin:0 0 5px; font-size:19px; font-weight:800; }
     .pp-game-tile p { margin:0; color:rgba(255,255,255,.62); font-size:12px; font-weight:700; }
+    .pp-soon { filter:saturate(.45); opacity:.72; }
     @keyframes pp-float { to { transform:translate(var(--x),calc(var(--y) - 18px)) rotate(calc(var(--r) + 2deg)); } }
     @media (max-width:760px) {
       .pp-nav-links, .pp-store-links { display:none !important; }
@@ -94,7 +95,7 @@
 </head>
 <body>
 
-<div style="background:#0B0A18; color:#fff; font-family:'Plus Jakarta Sans',system-ui,sans-serif; overflow-x:hidden; position:relative;">
+<div style="background:#0D0B1A; color:#fff; font-family:'Nunito',system-ui,sans-serif; overflow-x:hidden; position:relative;">
 
   <!-- ambient glows -->
   <div style="position:absolute; top:-260px; left:50%; transform:translateX(-50%); width:1300px; height:1000px; background:radial-gradient(circle, rgba(124,47,247,0.30), transparent 60%); pointer-events:none;"></div>
@@ -123,7 +124,7 @@
           <span style="display:flex; flex-direction:column; line-height:1.1;"><span style="font-size:8px; font-weight:600; color:rgba(255,255,255,0.6); letter-spacing:0.02em;">GET IT ON</span><span style="font-size:13px; font-weight:800; color:#fff;">Google Play</span></span>
         </a>
       </div>
-      <a href="https://app.playparty.space/" class="pp-cta pp-header-launch" style="display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg,#A855F7,#FF4D9A); color:#fff; font-weight:700; font-size:14.5px; border-radius:12px; padding:11px 20px; text-decoration:none; box-shadow:0 8px 22px rgba(168,85,247,0.4);">Launch Web App</a>
+      <a href="https://app.playparty.space/" class="pp-cta pp-header-launch" style="display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg,#FFD700,#FB923C); color:#1A1135; font-weight:900; font-size:14.5px; border-radius:12px; padding:11px 20px; text-decoration:none; box-shadow:0 8px 22px rgba(168,85,247,0.4);">Launch Web App</a>
     </div>
   </header>
 
@@ -144,75 +145,54 @@
       <div class="pp-float-card"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/wordwizard-thumb.jpg" alt=""><span>Word Wizard</span></div>
     </div>
     <div class="pp-hero-content">
-      <div style="display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#FDE047; background:rgba(11,10,24,.76); border:1px solid rgba(253,224,71,.34); border-radius:999px; padding:8px 15px; margin-bottom:24px; backdrop-filter:blur(12px);">12 games · one room · everyone plays</div>
-      <h1 style="font-size:68px; line-height:.98; font-weight:800; letter-spacing:-0.04em; margin:0 0 22px; text-wrap:balance; text-shadow:0 4px 32px #0B0A18;">Your group chat's <span style="background:linear-gradient(120deg,#C084FC,#FF4D9A,#FDE047); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;">next game night.</span></h1>
-      <p class="pp-hero-copy" style="font-size:19px; line-height:1.6; color:rgba(255,255,255,.76); margin:0 auto 34px; max-width:600px; text-shadow:0 2px 18px #0B0A18;">Create a room, share the code, and jump between fast party games with live video and voice. Nothing to set up. Nobody sits out.</p>
+      <div style="display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#FDE047; background:rgba(11,10,24,.76); border:1px solid rgba(253,224,71,.34); border-radius:999px; padding:8px 15px; margin-bottom:24px; backdrop-filter:blur(12px);">9 games ready · friends · live rooms</div>
+      <h1 style="font-size:68px; line-height:.98; font-weight:800; letter-spacing:-0.04em; margin:0 0 22px; text-wrap:balance; text-shadow:0 4px 32px #0B0A18;">Your party starts <span style="background:linear-gradient(120deg,#C084FC,#FF4D9A,#FDE047); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;">before the game.</span></h1>
+      <p class="pp-hero-copy" style="font-size:19px; line-height:1.6; color:rgba(255,255,255,.76); margin:0 auto 34px; max-width:600px; text-shadow:0 2px 18px #0B0A18;">Build your profile, see who is online, discover live public rooms, or host a private game for your friends.</p>
       <div class="pp-hero-actions">
-        <a href="https://app.playparty.space/?action=createRoom" class="pp-cta-lift pp-create" style="display:inline-flex; align-items:center; gap:16px; background:linear-gradient(135deg,#A855F7,#FF4D9A); color:#fff; font-weight:800; font-size:32px; letter-spacing:-.02em; border-radius:22px; padding:27px 54px; text-decoration:none; box-shadow:0 24px 60px rgba(168,85,247,.54);">Create Room <span aria-hidden="true">→</span></a>
+        <a href="https://app.playparty.space/?action=createRoom" class="pp-cta-lift pp-create" style="display:inline-flex; align-items:center; gap:16px; background:linear-gradient(135deg,#FFD700,#FB923C); color:#1A1135; font-weight:900; font-size:32px; letter-spacing:-.02em; border-radius:22px; padding:27px 54px; text-decoration:none; box-shadow:0 24px 60px rgba(168,85,247,.54);">Create Room <span aria-hidden="true">→</span></a>
         <a href="https://app.playparty.space/" class="pp-join">Join Room</a>
       </div>
       <div style="display:flex; justify-content:center; align-items:center; gap:14px; flex-wrap:wrap; margin-top:25px; font-size:13px; color:rgba(255,255,255,.58); font-weight:700;">
-        <span>Free to play</span><span style="opacity:.35;">•</span><span>No web download</span><span style="opacity:.35;">•</span><span>2–10 friends</span>
+        <span>Profiles and friends</span><span style="opacity:.35;">•</span><span>Public or private rooms</span><span style="opacity:.35;">•</span><span>Up to 12 players</span>
       </div>
     </div>
   </section>
 
-  <!-- ============ GAMES ============ -->
-  <section id="games" style="position:relative; max-width:1120px; margin:0 auto; padding:72px 24px;">
-    <div style="text-align:center; margin-bottom:42px;">
-      <div style="font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#A855F7; margin-bottom:12px;">Choose your chaos</div>
-      <h2 style="font-size:40px; font-weight:800; letter-spacing:-.02em; margin:0 0 12px;">12 games. No spectator mode.</h2>
-      <p style="font-size:17px; color:rgba(255,255,255,.6); margin:0 auto; max-width:600px; line-height:1.5;">Bluff, race, solve, collect, and rematch without leaving the room.</p>
+  <!-- ============ CURRENT APP ============ -->
+  <section id="social" style="position:relative; max-width:1120px; margin:0 auto; padding:66px 24px;">
+    <div style="text-align:center; margin-bottom:38px;">
+      <div style="font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#00F3FF; margin-bottom:12px;">More than a room code</div>
+      <h2 style="font-size:40px; font-weight:900; letter-spacing:-.025em; margin:0 0 12px;">The party is already moving.</h2>
+      <p style="font-size:17px; color:rgba(255,255,255,.64); margin:0 auto; max-width:610px; line-height:1.55;">Your profile, friends, open rooms, and games live together in one social hub.</p>
     </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px;">
+      <article style="padding:25px; border:1px solid rgba(255,255,255,.1); border-radius:22px; background:rgba(255,255,255,.05);"><div style="font-size:12px; font-weight:900; color:#FFD700; letter-spacing:.12em; margin-bottom:12px;">YOUR PROFILE</div><h3 style="font-size:21px; margin:0 0 8px;">Make progress visible</h3><p style="margin:0; color:rgba(255,255,255,.62); line-height:1.55;">Carry your avatar, level, progress, and victories into every room.</p></article>
+      <article style="padding:25px; border:1px solid rgba(139,92,246,.35); border-radius:22px; background:linear-gradient(145deg,rgba(139,92,246,.12),rgba(255,45,120,.06));"><div style="font-size:12px; font-weight:900; color:#C4B5FD; letter-spacing:.12em; margin-bottom:12px;">FRIENDS</div><h3 style="font-size:21px; margin:0 0 8px;">See who is ready</h3><p style="margin:0; color:rgba(255,255,255,.62); line-height:1.55;">Find friends, spot who is online, and bring your people into the next game.</p></article>
+      <article style="padding:25px; border:1px solid rgba(0,243,255,.3); border-radius:22px; background:linear-gradient(145deg,rgba(0,243,255,.09),rgba(139,92,246,.07));"><div style="font-size:12px; font-weight:900; color:#00F3FF; letter-spacing:.12em; margin-bottom:12px;">LIVE ROOMS</div><h3 style="font-size:21px; margin:0 0 8px;">Join what is happening</h3><p style="margin:0; color:rgba(255,255,255,.62); line-height:1.55;">Browse public rooms, preview a party, or enter a private four-character code.</p></article>
+      <article style="padding:25px; border:1px solid rgba(255,215,0,.3); border-radius:22px; background:linear-gradient(145deg,rgba(255,215,0,.1),rgba(251,146,60,.07));"><div style="font-size:12px; font-weight:900; color:#FFD700; letter-spacing:.12em; margin-bottom:12px;">CREATE + JOIN</div><h3 style="font-size:21px; margin:0 0 8px;">Take the obvious next step</h3><p style="margin:0; color:rgba(255,255,255,.62); line-height:1.55;">Host a game with Create, or enter a room directly with Join.</p></article>
+    </div>
+  </section>
+
+  <!-- ============ GAMES ============ -->
+  <!-- ponytail: keep this static catalogue aligned with GameMode.kt, GameCatalog.kt, and GameThumb.kt. -->
+  <section id="games" style="position:relative; max-width:1120px; margin:0 auto; padding:72px 24px;">
+    <div style="text-align:center; margin-bottom:42px;"><div style="font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#A78BFA; margin-bottom:12px;">Ready to play</div><h2 style="font-size:40px; font-weight:900; letter-spacing:-.025em; margin:0 0 12px;">9 games in the room now.</h2><p style="font-size:17px; color:rgba(255,255,255,.62); margin:0 auto; max-width:600px; line-height:1.5;">Availability may change as PlayParty keeps evolving.</p></div>
     <div class="pp-game-grid">
-      <article class="pp-game-tile">
-        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/imposter-hero.jpg" alt="Imposter game artwork" loading="lazy">
-        <div><h3>Imposter</h3><p>4–10 players</p></div>
-      </article>
-      <article class="pp-game-tile">
-        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/corptheft-thumb.jpg" alt="Corp vs Theft game artwork" loading="lazy">
-        <div><h3>Corp vs Theft</h3><p>4–10 players</p></div>
-      </article>
-      <article class="pp-game-tile">
-        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/abracadabra-thumb.jpg" alt="Abracadabra game artwork" loading="lazy">
-        <div><h3>Abracadabra</h3><p>2–10 players</p></div>
-      </article>
-      <article class="pp-game-tile">
-        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/who-better-lie-hero.jpg" alt="Who Better Lie game artwork" loading="lazy">
-        <div><h3>Who Better Lie</h3><p>3–10 players</p></div>
-      </article>
-      <article class="pp-game-tile">
-        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/math-thumb.jpg" alt="Math Rapid Fire game artwork" loading="lazy">
-        <div><h3>Math Rapid Fire</h3><p>2–10 players</p></div>
-      </article>
-      <article class="pp-game-tile">
-        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/collector-thumb.jpg" alt="Collector game artwork" loading="lazy">
-        <div><h3>Collector</h3><p>2–6 players</p></div>
-      </article>
-      <article class="pp-game-tile">
-        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/bingo-thumb.jpg" alt="Bingo game artwork" loading="lazy">
-        <div><h3>Bingo</h3><p>2–10 players</p></div>
-      </article>
-      <article class="pp-game-tile">
-        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/zerokatta-thumb.jpg" alt="Zero Katta game artwork" loading="lazy">
-        <div><h3>Zero Katta</h3><p>2 players</p></div>
-      </article>
-      <article class="pp-game-tile">
-        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/ludo-thumb.jpg" alt="Ludo game artwork" loading="lazy">
-        <div><h3>Ludo</h3><p>2–4 players</p></div>
-      </article>
-      <article class="pp-game-tile">
-        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/puzzle-thumb.jpg" alt="Puzzle Master game artwork" loading="lazy">
-        <div><h3>Puzzle Master</h3><p>Solo or together</p></div>
-      </article>
-      <article class="pp-game-tile">
-        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/riddle-thumb.jpg" alt="Riddle in the Middle game artwork" loading="lazy">
-        <div><h3>Riddle in the Middle</h3><p>2–10 players</p></div>
-      </article>
-      <article class="pp-game-tile">
-        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/wordwizard-thumb.jpg" alt="Word Wizard game artwork" loading="lazy">
-        <div><h3>Word Wizard</h3><p>Solo or together</p></div>
-      </article>
+      <article class="pp-game-tile"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/imposter-hero.jpg" alt="Imposter game artwork" loading="lazy"><div><h3>Imposter</h3><p>3–12 players</p></div></article>
+      <article class="pp-game-tile"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/corptheft-thumb.jpg" alt="Corp & Theft game artwork" loading="lazy"><div><h3>Corp & Theft</h3><p>4–12 players</p></div></article>
+      <article class="pp-game-tile"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/abracadabra-thumb.jpg" alt="Abracadabra game artwork" loading="lazy"><div><h3>Abracadabra</h3><p>3–12 players</p></div></article>
+      <article class="pp-game-tile"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/who-better-lie-hero.jpg" alt="Who Better Lie game artwork" loading="lazy"><div><h3>Who Better Lie</h3><p>3–12 players</p></div></article>
+      <article class="pp-game-tile"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/math-thumb.jpg" alt="Math Rapid Fire game artwork" loading="lazy"><div><h3>Math Rapid Fire</h3><p>2–12 players</p></div></article>
+      <article class="pp-game-tile"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/collector-thumb.jpg" alt="Collector game artwork" loading="lazy"><div><h3>Collector</h3><p>2–8 players</p></div></article>
+      <article class="pp-game-tile"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/bingo-thumb.jpg" alt="Bingo game artwork" loading="lazy"><div><h3>Bingo</h3><p>2–8 players</p></div></article>
+      <article class="pp-game-tile"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/zerokatta-thumb.jpg" alt="Zero Katta game artwork" loading="lazy"><div><h3>Zero Katta</h3><p>2–8 players</p></div></article>
+      <article class="pp-game-tile"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/ludo-thumb.jpg" alt="Ludo game artwork" loading="lazy"><div><h3>Ludo</h3><p>2–6 players</p></div></article>
+    </div>
+    <div style="text-align:center; margin:62px 0 26px;"><div style="font-size:13px; font-weight:900; letter-spacing:.14em; color:#FFD700; text-transform:uppercase; margin-bottom:10px;">Coming soon</div><h2 style="font-size:30px; font-weight:900; margin:0;">More ways to play are taking shape.</h2></div>
+    <div class="pp-game-grid">
+      <article class="pp-game-tile pp-soon"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/puzzle-thumb.jpg" alt="Puzzle Master game artwork" loading="lazy"><div><span style="display:inline-block; margin-bottom:7px; color:#FFD700; font-size:10px; font-weight:900; letter-spacing:.12em;">COMING SOON</span><h3>Puzzle Master</h3><p>In development</p></div></article>
+      <article class="pp-game-tile pp-soon"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/riddle-thumb.jpg" alt="Riddle in the Middle game artwork" loading="lazy"><div><span style="display:inline-block; margin-bottom:7px; color:#FFD700; font-size:10px; font-weight:900; letter-spacing:.12em;">COMING SOON</span><h3>Riddle in the Middle</h3><p>In development</p></div></article>
+      <article class="pp-game-tile pp-soon"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/wordwizard-thumb.jpg" alt="Word Wizard game artwork" loading="lazy"><div><span style="display:inline-block; margin-bottom:7px; color:#FFD700; font-size:10px; font-weight:900; letter-spacing:.12em;">COMING SOON</span><h3>Word Wizard</h3><p>In development</p></div></article>
     </div>
   </section>
 
@@ -220,23 +200,23 @@
   <section id="how" style="position:relative; max-width:1120px; margin:0 auto; padding:70px 24px;">
     <div style="text-align:center; margin-bottom:46px;">
       <div style="font-size:13px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#34D399; margin-bottom:12px;">How it works</div>
-      <h2 style="font-size:40px; font-weight:800; letter-spacing:-0.02em; margin:0 0 12px;">Three taps to chaos.</h2>
+      <h2 style="font-size:40px; font-weight:800; letter-spacing:-0.02em; margin:0 0 12px;">From profile to party.</h2>
     </div>
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px;">
       <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:30px 26px;">
         <div style="width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg,#A855F7,#FF4D9A); display:flex; align-items:center; justify-content:center; font-size:19px; font-weight:800; margin-bottom:18px;">1</div>
-        <h3 style="font-size:19px; font-weight:800; margin:0 0 9px;">Create a room</h3>
-        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0;">Hit <strong style="color:#fff;">Create Room</strong> and you get a private room with a shareable link and code — no setup, no accounts needed to start.</p>
+        <h3 style="font-size:19px; font-weight:800; margin:0 0 9px;">Set up your profile</h3>
+        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0;">Sign in and complete your PlayParty profile so friends can recognize you across rooms.</p>
       </div>
       <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:30px 26px;">
         <div style="width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg,#34D399,#1f9e63); display:flex; align-items:center; justify-content:center; font-size:19px; font-weight:800; margin-bottom:18px;">2</div>
-        <h3 style="font-size:19px; font-weight:800; margin:0 0 9px;">Friends join on video</h3>
-        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0;">They tap the link and hop in from any device with camera &amp; mic. See everyone live, react in real time, talk smack.</p>
+        <h3 style="font-size:19px; font-weight:800; margin:0 0 9px;">Find friends or a room</h3>
+        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0;">See who is online, browse live public rooms, or enter the private code a host shared.</p>
       </div>
       <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:30px 26px;">
         <div style="width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg,#FB923C,#e0612c); display:flex; align-items:center; justify-content:center; font-size:19px; font-weight:800; margin-bottom:18px;">3</div>
-        <h3 style="font-size:19px; font-weight:800; margin:0 0 9px;">Pick a game &amp; play</h3>
-        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0;">Choose from 12 games, play a quick round, then rematch or swap instantly — all without leaving the room.</p>
+        <h3 style="font-size:19px; font-weight:800; margin:0 0 9px;">Host or join a game</h3>
+        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0;">Create a room with one of the currently available games, or join the party already in progress.</p>
       </div>
     </div>
   </section>
@@ -245,8 +225,8 @@
   <section id="platforms" style="position:relative; max-width:1120px; margin:0 auto; padding:70px 24px;">
     <div style="text-align:center; margin-bottom:46px;">
       <div style="font-size:13px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#FB923C; margin-bottom:12px;">Platforms</div>
-      <h2 style="font-size:40px; font-weight:800; letter-spacing:-0.02em; margin:0 0 12px;">Play on everything.</h2>
-      <p style="font-size:17px; color:rgba(255,255,255,0.6); margin:0 auto; max-width:560px; line-height:1.5;">The same room works across phones, tablets and the web — mix and match however your friends show up.</p>
+      <h2 style="font-size:40px; font-weight:800; letter-spacing:-0.02em; margin:0 0 12px;">Meet your friends where PlayParty is available.</h2>
+      <p style="font-size:17px; color:rgba(255,255,255,0.6); margin:0 auto; max-width:560px; line-height:1.5;">Open the browser app, get PlayParty on Android, or request access to the iOS beta.</p>
     </div>
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px;">
 
@@ -255,7 +235,7 @@
           <svg viewBox="0 0 24 24" style="width:26px; height:26px;"><path d="M16.4 12.7c0-2.2 1.8-3.2 1.9-3.3-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.6.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.5 0-2.8.8-3.5 2.2-1.5 2.6-.4 6.4 1.1 8.5.7 1 1.5 2.2 2.6 2.1 1-.04 1.4-.7 2.7-.7 1.2 0 1.6.7 2.7.66 1.1-.02 1.8-1 2.5-2 .8-1.2 1.1-2.3 1.1-2.4-.02-.01-2.1-.81-2.1-3.16z" fill="#fff"/><path d="M14.6 6.1c.6-.7 1-1.7.9-2.7-.9.04-1.9.6-2.5 1.3-.5.6-1 1.6-.9 2.6 1 .07 1.9-.5 2.5-1.2z" fill="#fff"/></svg>
         </div>
         <h3 style="font-size:21px; font-weight:800; margin:0 0 9px;">iOS</h3>
-        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0 0 22px; flex:1;">A native iPhone &amp; iPad app with buttery 60fps video, haptic reactions and Sign in with Apple. Currently in invite-only TestFlight beta — grab your spot below.</p>
+        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0 0 22px; flex:1;">The iOS app is currently offered through an invite-only TestFlight beta. Request access below.</p>
         <a href="#ios-beta" class="pp-white" style="display:inline-flex; align-items:center; justify-content:center; gap:9px; background:#fff; color:#0B0A18; font-weight:700; font-size:14.5px; border-radius:12px; padding:13px 18px; text-decoration:none;">Join the iOS beta</a>
       </div>
 
@@ -264,7 +244,7 @@
           <svg viewBox="0 0 24 24" style="width:26px; height:26px;"><path d="M5 10.5a1.3 1.3 0 0 1 1.3 1.3v5.4A1.3 1.3 0 1 1 3.7 17.2v-5.4A1.3 1.3 0 0 1 5 10.5zm14 0a1.3 1.3 0 0 1 1.3 1.3v5.4a1.3 1.3 0 1 1-2.6 0v-5.4A1.3 1.3 0 0 1 19 10.5zM7 10.2h10v7.6a1.1 1.1 0 0 1-1.1 1.1h-1v2.3a1.3 1.3 0 1 1-2.6 0v-2.3h-1.6v2.3a1.3 1.3 0 1 1-2.6 0v-2.3h-1A1.1 1.1 0 0 1 7 17.8zM12 3.2c2.9 0 5.3 1.8 5.6 4.2H6.4C6.7 5 9.1 3.2 12 3.2zm-2.4 2a.7.7 0 1 0 0-1.4.7.7 0 0 0 0 1.4zm4.8 0a.7.7 0 1 0 0-1.4.7.7 0 0 0 0 1.4z" fill="#34D399"/></svg>
         </div>
         <h3 style="font-size:21px; font-weight:800; margin:0 0 9px;">Android</h3>
-        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0 0 22px; flex:1;">A native Android app on Google Play with a low-data mode for shaky connections. Runs great on any phone or tablet, old or new.</p>
+        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0 0 22px; flex:1;">Get the current Android release from Google Play and sign in to your PlayParty profile.</p>
         <a href="https://play.google.com/store/apps/details?id=com.playparty.app" class="pp-white" style="display:inline-flex; align-items:center; justify-content:center; gap:9px; background:#fff; color:#0B0A18; font-weight:700; font-size:14.5px; border-radius:12px; padding:13px 18px; text-decoration:none;">Get it on Google Play</a>
       </div>
 
@@ -272,9 +252,9 @@
         <div style="width:52px; height:52px; border-radius:14px; background:rgba(43,150,214,0.18); display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
           <svg viewBox="0 0 24 24" style="width:28px; height:28px;"><circle cx="12" cy="12" r="9" fill="none" stroke="#38BDF8" stroke-width="1.7"/><path d="M3 12h18M12 3c2.6 2.4 2.6 15.6 0 18M12 3c-2.6 2.4-2.6 15.6 0 18" fill="none" stroke="#38BDF8" stroke-width="1.7"/></svg>
         </div>
-        <div style="display:inline-flex; align-self:flex-start; font-size:10.5px; font-weight:800; letter-spacing:0.05em; color:#0d0a1a; background:#FFD24A; border-radius:6px; padding:3px 8px; margin-bottom:10px;">NO INSTALL</div>
+        <div style="display:inline-flex; align-self:flex-start; font-size:10.5px; font-weight:800; letter-spacing:0.05em; color:#0d0a1a; background:#FFD24A; border-radius:6px; padding:3px 8px; margin-bottom:10px;">BROWSER APP</div>
         <h3 style="font-size:21px; font-weight:800; margin:0 0 9px;">Web app</h3>
-        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.66); margin:0 0 22px; flex:1;">Start or join a room right in the browser — nothing to download. Share a link and friends are in within seconds. Best on a laptop for the big screen.</p>
+        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.66); margin:0 0 22px; flex:1;">Open the browser app to access your profile, friends, live rooms, and Create or Join flows.</p>
         <a href="https://app.playparty.space/?action=createRoom" class="pp-cta" style="display:inline-flex; align-items:center; justify-content:center; gap:9px; background:linear-gradient(135deg,#A855F7,#FF4D9A); color:#fff; font-weight:700; font-size:14.5px; border-radius:12px; padding:13px 18px; text-decoration:none; box-shadow:0 8px 22px rgba(168,85,247,0.4);">Open web app →</a>
       </div>
 
@@ -302,8 +282,8 @@
       <div style="position:absolute; top:-120px; left:50%; transform:translateX(-50%); width:600px; height:400px; background:radial-gradient(circle, rgba(255,77,154,0.25), transparent 65%); pointer-events:none;"></div>
       <img src="playparty-icon.svg" alt="" style="width:72px; height:72px; border-radius:18px; margin:0 auto 22px; display:block; box-shadow:0 12px 36px rgba(124,47,247,0.5); position:relative;">
       <h2 style="font-size:42px; font-weight:800; letter-spacing:-0.02em; margin:0 0 14px; position:relative;">Ready to start the party?</h2>
-      <p style="font-size:18px; color:rgba(255,255,255,0.72); margin:0 auto 30px; max-width:480px; position:relative;">Create a room now and send the link — your friends are one tap away.</p>
-      <a href="https://app.playparty.space/?action=createRoom" class="pp-white" style="display:inline-flex; align-items:center; gap:9px; background:#fff; color:#0B0A18; font-weight:800; font-size:17px; border-radius:14px; padding:17px 32px; text-decoration:none; box-shadow:0 14px 40px rgba(0,0,0,0.4); position:relative;">Create a Room 🎉</a>
+      <p style="font-size:18px; color:rgba(255,255,255,0.72); margin:0 auto 30px; max-width:480px; position:relative;">Open PlayParty, see who is online, and choose where the party starts.</p>
+      <a href="https://app.playparty.space/?action=createRoom" class="pp-white" style="display:inline-flex; align-items:center; gap:9px; background:#fff; color:#0B0A18; font-weight:800; font-size:17px; border-radius:14px; padding:17px 32px; text-decoration:none; box-shadow:0 14px 40px rgba(0,0,0,0.4); position:relative;">Open PlayParty</a>
     </div>
   </section>
 
