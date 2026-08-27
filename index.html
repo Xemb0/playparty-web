@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PlayParty — Party Games With Friends, Over Live Video</title>
-  <meta name="description" content="Spin up a room, share the link, and play quick multiplayer party games — Imposter, Guess It, Lucky Dice and the chaotic Collector grid — with friends over live video &amp; voice.">
+  <title>PlayParty — 12 Party Games, One Room</title>
+  <meta name="description" content="Create a room, invite your friends, and play 12 multiplayer party games together over live video and voice — instantly on web, iOS, and Android.">
   <link rel="icon" type="image/svg+xml" href="playparty-icon.svg">
   <link rel="apple-touch-icon" href="playparty-icon.svg">
   <meta name="theme-color" content="#0B0A18">
-  <meta property="og:title" content="PlayParty — Party Games With Friends, Over Live Video">
-  <meta property="og:description" content="Imposter, Guess It, Lucky Dice and Collector. Play with your friends over live video. Just share a room code.">
+  <meta property="og:title" content="PlayParty — 12 Party Games, One Room">
+  <meta property="og:description" content="Create or join a room and play 12 multiplayer party games together over live video. No download needed on web.">
   <meta property="og:image" content="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/marketing/playparty/feature_graphic.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://playparty.space/">
@@ -34,6 +34,62 @@
     .pp-store:hover { border-color:rgba(255,255,255,0.4) !important; }
     .pp-card:hover { border-color:rgba(168,85,247,0.5) !important; }
     .pp-white:hover { filter:brightness(0.92); }
+    a:focus-visible, button:focus-visible, input:focus-visible { outline:3px solid #FDE047; outline-offset:4px; }
+    .pp-hero { isolation:isolate; min-height:720px; }
+    .pp-hero::after { content:""; position:absolute; inset:0; z-index:-1; background:radial-gradient(ellipse at 48% 45%,rgba(11,10,24,.97) 0%,rgba(11,10,24,.84) 35%,rgba(11,10,24,.28) 72%,transparent 100%); pointer-events:none; }
+    .pp-hero-content { position:relative; z-index:2; max-width:720px; margin:0 auto; text-align:center; }
+    .pp-hero-actions { display:flex; flex-direction:column; align-items:center; gap:12px; }
+    .pp-join { display:inline-flex; align-items:center; justify-content:center; min-width:280px; color:#fff; font-size:17px; font-weight:800; text-decoration:none; padding:13px 24px; border:1px solid rgba(255,255,255,.24); border-radius:14px; background:rgba(11,10,24,.72); backdrop-filter:blur(14px); }
+    .pp-join:hover { background:rgba(255,255,255,.13); border-color:rgba(255,255,255,.45); transform:translateY(-2px); }
+    .pp-game-cloud { position:absolute; inset:22px -100px 0; z-index:-2; overflow:hidden; pointer-events:none; }
+    .pp-float-card { --x:0px; --y:0px; --r:0deg; position:absolute; width:142px; aspect-ratio:4/5; overflow:hidden; border:1px solid rgba(255,255,255,.24); border-radius:18px; background:#17132d; box-shadow:0 20px 60px rgba(0,0,0,.48); opacity:.62; transform:translate(var(--x),var(--y)) rotate(var(--r)); animation:pp-float var(--speed,8s) ease-in-out infinite alternate; animation-delay:var(--delay,0s); }
+    .pp-float-card img { width:100%; height:100%; display:block; object-fit:cover; }
+    .pp-float-card span { position:absolute; inset:auto 8px 8px; padding:7px 9px; border-radius:9px; color:#fff; font-size:10px; font-weight:800; line-height:1.15; text-align:left; background:rgba(7,6,16,.8); backdrop-filter:blur(8px); }
+    .pp-float-card:nth-child(1) { left:2%; top:8%; --r:-10deg; --speed:7.5s; }
+    .pp-float-card:nth-child(2) { left:17%; top:1%; --r:7deg; --speed:9s; --delay:-3s; }
+    .pp-float-card:nth-child(3) { right:16%; top:0; --r:-6deg; --speed:8.4s; --delay:-5s; }
+    .pp-float-card:nth-child(4) { right:1%; top:10%; --r:10deg; --speed:10s; --delay:-1s; }
+    .pp-float-card:nth-child(5) { left:-1%; top:42%; --r:7deg; --speed:8s; --delay:-4s; }
+    .pp-float-card:nth-child(6) { left:12%; bottom:2%; --r:-8deg; --speed:9.5s; --delay:-2s; }
+    .pp-float-card:nth-child(7) { right:11%; bottom:1%; --r:6deg; --speed:7.8s; --delay:-6s; }
+    .pp-float-card:nth-child(8) { right:-1%; top:45%; --r:-9deg; --speed:9.2s; --delay:-3.5s; }
+    .pp-float-card:nth-child(9) { left:29%; bottom:-7%; --r:5deg; --speed:8.7s; --delay:-2.5s; }
+    .pp-float-card:nth-child(10) { right:29%; bottom:-8%; --r:-5deg; --speed:10.4s; --delay:-7s; }
+    .pp-float-card:nth-child(11) { left:29%; top:-14%; --r:-3deg; --speed:9.8s; --delay:-4.5s; }
+    .pp-float-card:nth-child(12) { right:30%; top:-15%; --r:4deg; --speed:8.2s; --delay:-1.5s; }
+    .pp-game-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+    .pp-game-tile { position:relative; min-height:270px; overflow:hidden; border:1px solid rgba(255,255,255,.1); border-radius:20px; background:#17132d; box-shadow:0 16px 42px rgba(0,0,0,.25); }
+    .pp-game-tile img { width:100%; height:100%; position:absolute; inset:0; object-fit:cover; transition:transform .35s ease; }
+    .pp-game-tile:hover img { transform:scale(1.04); }
+    .pp-game-tile::after { content:""; position:absolute; inset:32% 0 0; background:linear-gradient(transparent,rgba(7,6,16,.96)); }
+    .pp-game-tile div { position:absolute; z-index:1; inset:auto 18px 17px; }
+    .pp-game-tile h3 { margin:0 0 5px; font-size:19px; font-weight:800; }
+    .pp-game-tile p { margin:0; color:rgba(255,255,255,.62); font-size:12px; font-weight:700; }
+    @keyframes pp-float { to { transform:translate(var(--x),calc(var(--y) - 18px)) rotate(calc(var(--r) + 2deg)); } }
+    @media (max-width:760px) {
+      .pp-nav-links, .pp-store-links { display:none !important; }
+      .pp-header-inner { padding:12px 16px !important; }
+      .pp-header-launch { margin-left:auto; padding:10px 13px !important; font-size:12.5px !important; }
+      .pp-hero { min-height:680px; padding:68px 18px 58px !important; }
+      .pp-hero h1 { font-size:43px !important; }
+      .pp-hero-copy { font-size:17px !important; }
+      .pp-create { width:100%; max-width:360px; justify-content:center; font-size:25px !important; padding:23px 25px !important; }
+      .pp-join { width:100%; max-width:360px; }
+      .pp-game-cloud { inset:12px -120px 0; }
+      .pp-float-card { width:112px; opacity:.42; }
+      .pp-float-card:nth-child(2), .pp-float-card:nth-child(3), .pp-float-card:nth-child(9), .pp-float-card:nth-child(10), .pp-float-card:nth-child(11), .pp-float-card:nth-child(12) { display:none; }
+      .pp-game-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .pp-game-tile { min-height:220px; }
+    }
+    @media (max-width:430px) {
+      .pp-brand-beta { display:none; }
+      .pp-game-grid { grid-template-columns:1fr; }
+      .pp-game-tile { min-height:300px; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+      *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+    }
   </style>
 </head>
 <body>
@@ -46,18 +102,18 @@
 
   <!-- ============ NAV ============ -->
   <header style="position:sticky; top:0; z-index:50; backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); background:rgba(11,10,24,0.72); border-bottom:1px solid rgba(255,255,255,0.06);">
-    <div style="max-width:1120px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:20px;">
+    <div class="pp-header-inner" style="max-width:1120px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:20px;">
       <a href="#top" style="display:flex; align-items:center; gap:11px; text-decoration:none;">
         <img src="playparty-icon.svg" alt="PlayParty" style="width:38px; height:38px; border-radius:10px; box-shadow:0 4px 14px rgba(124,47,247,0.45);">
         <span style="font-size:19px; font-weight:800; color:#fff; letter-spacing:-0.01em;">PlayParty</span>
-        <span style="font-size:10px; font-weight:800; letter-spacing:0.06em; color:#34D399; background:rgba(52,211,153,0.14); border:1px solid rgba(52,211,153,0.3); border-radius:6px; padding:3px 7px;">BETA</span>
+        <span class="pp-brand-beta" style="font-size:10px; font-weight:800; letter-spacing:0.06em; color:#34D399; background:rgba(52,211,153,0.14); border:1px solid rgba(52,211,153,0.3); border-radius:6px; padding:3px 7px;">BETA</span>
       </a>
-      <nav style="margin-left:auto; display:flex; align-items:center; gap:28px;">
+      <nav class="pp-nav-links" style="margin-left:auto; display:flex; align-items:center; gap:28px;">
         <a href="#games" class="pp-nav" style="font-size:14.5px; font-weight:600; color:rgba(255,255,255,0.66); text-decoration:none;">Games</a>
         <a href="#how" class="pp-nav" style="font-size:14.5px; font-weight:600; color:rgba(255,255,255,0.66); text-decoration:none;">How it works</a>
         <a href="#platforms" class="pp-nav" style="font-size:14.5px; font-weight:600; color:rgba(255,255,255,0.66); text-decoration:none;">Platforms</a>
       </nav>
-      <div style="display:flex; align-items:center; gap:8px;">
+      <div class="pp-store-links" style="display:flex; align-items:center; gap:8px;">
         <a href="#ios-beta" class="pp-store" style="display:flex; align-items:center; gap:8px; background:#000; border:1px solid rgba(255,255,255,0.2); border-radius:11px; padding:8px 13px; text-decoration:none;">
           <svg viewBox="0 0 24 24" style="width:19px; height:19px; flex:none;"><path d="M16.4 12.7c0-2.2 1.8-3.2 1.9-3.3-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.6.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.5 0-2.8.8-3.5 2.2-1.5 2.6-.4 6.4 1.1 8.5.7 1 1.5 2.2 2.6 2.1 1-.04 1.4-.7 2.7-.7 1.2 0 1.6.7 2.7.66 1.1-.02 1.8-1 2.5-2 .8-1.2 1.1-2.3 1.1-2.4-.02-.01-2.1-.81-2.1-3.16z" fill="#fff"></path><path d="M14.6 6.1c.6-.7 1-1.7.9-2.7-.9.04-1.9.6-2.5 1.3-.5.6-1 1.6-.9 2.6 1 .07 1.9-.5 2.5-1.2z" fill="#fff"></path></svg>
           <span style="display:flex; flex-direction:column; line-height:1.1;"><span style="font-size:8px; font-weight:600; color:rgba(255,255,255,0.6); letter-spacing:0.02em;">iOS beta on</span><span style="font-size:13px; font-weight:800; color:#fff;">TestFlight</span></span>
@@ -67,117 +123,96 @@
           <span style="display:flex; flex-direction:column; line-height:1.1;"><span style="font-size:8px; font-weight:600; color:rgba(255,255,255,0.6); letter-spacing:0.02em;">GET IT ON</span><span style="font-size:13px; font-weight:800; color:#fff;">Google Play</span></span>
         </a>
       </div>
-      <a href="https://app.playparty.space/?action=createRoom" class="pp-cta" style="display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg,#A855F7,#FF4D9A); color:#fff; font-weight:700; font-size:14.5px; border-radius:12px; padding:11px 20px; text-decoration:none; box-shadow:0 8px 22px rgba(168,85,247,0.4);">Create Room</a>
+      <a href="https://app.playparty.space/" class="pp-cta pp-header-launch" style="display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg,#A855F7,#FF4D9A); color:#fff; font-weight:700; font-size:14.5px; border-radius:12px; padding:11px 20px; text-decoration:none; box-shadow:0 8px 22px rgba(168,85,247,0.4);">Launch Web App</a>
     </div>
   </header>
 
   <!-- ============ HERO ============ -->
-  <section id="top" style="position:relative; max-width:1120px; margin:0 auto; padding:80px 24px 70px; display:flex; gap:56px; align-items:center; flex-wrap:wrap;">
-    <div style="flex:1 1 440px; min-width:320px;">
-      <div style="display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:#C9A8FF; background:rgba(168,85,247,0.12); border:1px solid rgba(168,85,247,0.28); border-radius:999px; padding:7px 14px; margin-bottom:22px;">🎉 Party games, over video</div>
-      <h1 style="font-size:58px; line-height:1.04; font-weight:800; letter-spacing:-0.025em; margin:0 0 18px; text-wrap:balance;">Turn any call into a <span style="background:linear-gradient(120deg,#A855F7,#FF4D9A,#FB923C); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;">game night.</span></h1>
-      <p style="font-size:18.5px; line-height:1.55; color:rgba(255,255,255,0.66); margin:0 0 32px; max-width:520px;">Spin up a room, drop the link in your group chat, and play quick multiplayer games together on video &amp; audio — imposter, dice, guessing and the chaotic Collector grid.</p>
-      <div style="display:flex; gap:18px; flex-wrap:wrap; align-items:center;">
-        <a href="https://app.playparty.space/?action=createRoom" class="pp-cta-lift" style="display:inline-flex; align-items:center; gap:16px; background:linear-gradient(135deg,#A855F7,#FF4D9A); color:#fff; font-weight:800; font-size:34px; letter-spacing:-0.01em; border-radius:24px; padding:30px 56px; text-decoration:none; box-shadow:0 24px 60px rgba(168,85,247,0.5);">Create a Room →</a>
-        <a href="#how" class="pp-ghost" style="display:inline-flex; align-items:center; gap:9px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); color:#fff; font-weight:700; font-size:16.5px; border-radius:14px; padding:15px 24px; text-decoration:none;">See how it works</a>
-      </div>
-      <div style="display:flex; align-items:center; gap:18px; margin-top:26px; font-size:13.5px; color:rgba(255,255,255,0.5); font-weight:600;">
-        <span>Free to play</span><span style="opacity:.4;">•</span><span>No download on web</span><span style="opacity:.4;">•</span><span>2–10 friends</span>
-      </div>
+  <section id="top" class="pp-hero" style="position:relative; max-width:1320px; margin:0 auto; padding:104px 24px 86px; display:flex; align-items:center;">
+    <div class="pp-game-cloud" aria-hidden="true">
+      <div class="pp-float-card"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/imposter-hero.jpg" alt=""><span>Imposter</span></div>
+      <div class="pp-float-card"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/corptheft-thumb.jpg" alt=""><span>Corp vs Theft</span></div>
+      <div class="pp-float-card"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/abracadabra-thumb.jpg" alt=""><span>Abracadabra</span></div>
+      <div class="pp-float-card"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/who-better-lie-hero.jpg" alt=""><span>Who Better Lie</span></div>
+      <div class="pp-float-card"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/math-thumb.jpg" alt=""><span>Math Rapid Fire</span></div>
+      <div class="pp-float-card"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/collector-thumb.jpg" alt=""><span>Collector</span></div>
+      <div class="pp-float-card"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/bingo-thumb.jpg" alt=""><span>Bingo</span></div>
+      <div class="pp-float-card"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/zerokatta-thumb.jpg" alt=""><span>Zero Katta</span></div>
+      <div class="pp-float-card"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/ludo-thumb.jpg" alt=""><span>Ludo</span></div>
+      <div class="pp-float-card"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/puzzle-thumb.jpg" alt=""><span>Puzzle Master</span></div>
+      <div class="pp-float-card"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/riddle-thumb.jpg" alt=""><span>Riddle in the Middle</span></div>
+      <div class="pp-float-card"><img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/wordwizard-thumb.jpg" alt=""><span>Word Wizard</span></div>
     </div>
-
-    <!-- room preview -->
-    <div style="flex:1 1 380px; min-width:320px; display:flex; justify-content:center;">
-      <div style="width:380px; background:linear-gradient(165deg,#1c1640,#120f26); border:1px solid rgba(255,255,255,0.1); border-radius:24px; padding:18px; box-shadow:0 30px 80px rgba(0,0,0,0.55); position:relative;">
-        <div style="display:flex; align-items:center; gap:9px; margin-bottom:15px;">
-          <span style="width:9px; height:9px; border-radius:50%; background:#FF4D4D; box-shadow:0 0 8px #FF4D4D;"></span>
-          <span style="font-size:13px; font-weight:700; color:#fff;">PARTY-7KQ2</span>
-          <span style="margin-left:auto; font-size:12px; font-weight:600; color:rgba(255,255,255,0.5);">4 playing</span>
-        </div>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:11px;">
-          <div style="aspect-ratio:1.25; border-radius:14px; background:linear-gradient(160deg,#7C2FF7,#4d18a8); position:relative; overflow:hidden; padding:10px; display:flex; flex-direction:column; justify-content:flex-end;">
-            <span style="position:absolute; top:50%; left:50%; transform:translate(-50%,-58%); width:46px; height:46px; border-radius:50%; background:rgba(255,255,255,0.9); color:#7C2FF7; font-weight:800; font-size:19px; display:flex; align-items:center; justify-content:center;">M</span>
-            <span style="font-size:12px; font-weight:700; color:#fff; z-index:1;">Maya 🎤</span>
-          </div>
-          <div style="aspect-ratio:1.25; border-radius:14px; background:linear-gradient(160deg,#1f9e63,#117a47); position:relative; overflow:hidden; padding:10px; display:flex; flex-direction:column; justify-content:flex-end;">
-            <span style="position:absolute; top:50%; left:50%; transform:translate(-50%,-58%); width:46px; height:46px; border-radius:50%; background:rgba(255,255,255,0.9); color:#1f9e63; font-weight:800; font-size:19px; display:flex; align-items:center; justify-content:center;">L</span>
-            <span style="font-size:12px; font-weight:700; color:#fff; z-index:1;">Leo 😂</span>
-          </div>
-          <div style="aspect-ratio:1.25; border-radius:14px; background:linear-gradient(160deg,#e07a2c,#b65617); position:relative; overflow:hidden; padding:10px; display:flex; flex-direction:column; justify-content:flex-end;">
-            <span style="position:absolute; top:50%; left:50%; transform:translate(-50%,-58%); width:46px; height:46px; border-radius:50%; background:rgba(255,255,255,0.9); color:#e07a2c; font-weight:800; font-size:19px; display:flex; align-items:center; justify-content:center;">R</span>
-            <span style="font-size:12px; font-weight:700; color:#fff; z-index:1;">Ravi 🤔</span>
-          </div>
-          <div style="aspect-ratio:1.25; border-radius:14px; background:linear-gradient(160deg,#2b96d6,#1a6ba8); position:relative; overflow:hidden; padding:10px; display:flex; flex-direction:column; justify-content:flex-end;">
-            <span style="position:absolute; top:50%; left:50%; transform:translate(-50%,-58%); width:46px; height:46px; border-radius:50%; background:rgba(255,255,255,0.9); color:#2b96d6; font-weight:800; font-size:19px; display:flex; align-items:center; justify-content:center;">Z</span>
-            <span style="font-size:12px; font-weight:700; color:#fff; z-index:1;">Zoe 🥳</span>
-          </div>
-        </div>
-        <div style="margin-top:13px; display:flex; align-items:center; gap:10px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:12px 14px;">
-          <span style="font-size:22px;">🎭</span>
-          <div>
-            <div style="font-size:13.5px; font-weight:700; color:#fff;">Now playing · Imposter</div>
-            <div style="font-size:12px; color:rgba(255,255,255,0.55);">Round 2 · find the faker</div>
-          </div>
-          <span style="margin-left:auto; font-size:11px; font-weight:800; color:#0d0a1a; background:#FFD24A; border-radius:7px; padding:5px 9px;">VOTE</span>
-        </div>
+    <div class="pp-hero-content">
+      <div style="display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#FDE047; background:rgba(11,10,24,.76); border:1px solid rgba(253,224,71,.34); border-radius:999px; padding:8px 15px; margin-bottom:24px; backdrop-filter:blur(12px);">12 games · one room · everyone plays</div>
+      <h1 style="font-size:68px; line-height:.98; font-weight:800; letter-spacing:-0.04em; margin:0 0 22px; text-wrap:balance; text-shadow:0 4px 32px #0B0A18;">Your group chat's <span style="background:linear-gradient(120deg,#C084FC,#FF4D9A,#FDE047); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;">next game night.</span></h1>
+      <p class="pp-hero-copy" style="font-size:19px; line-height:1.6; color:rgba(255,255,255,.76); margin:0 auto 34px; max-width:600px; text-shadow:0 2px 18px #0B0A18;">Create a room, share the code, and jump between fast party games with live video and voice. Nothing to set up. Nobody sits out.</p>
+      <div class="pp-hero-actions">
+        <a href="https://app.playparty.space/?action=createRoom" class="pp-cta-lift pp-create" style="display:inline-flex; align-items:center; gap:16px; background:linear-gradient(135deg,#A855F7,#FF4D9A); color:#fff; font-weight:800; font-size:32px; letter-spacing:-.02em; border-radius:22px; padding:27px 54px; text-decoration:none; box-shadow:0 24px 60px rgba(168,85,247,.54);">Create Room <span aria-hidden="true">→</span></a>
+        <a href="https://app.playparty.space/" class="pp-join">Join Room</a>
+      </div>
+      <div style="display:flex; justify-content:center; align-items:center; gap:14px; flex-wrap:wrap; margin-top:25px; font-size:13px; color:rgba(255,255,255,.58); font-weight:700;">
+        <span>Free to play</span><span style="opacity:.35;">•</span><span>No web download</span><span style="opacity:.35;">•</span><span>2–10 friends</span>
       </div>
     </div>
   </section>
 
   <!-- ============ GAMES ============ -->
-  <section id="games" style="position:relative; max-width:1120px; margin:0 auto; padding:70px 24px;">
-    <div style="text-align:center; margin-bottom:46px;">
-      <div style="font-size:13px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#A855F7; margin-bottom:12px;">The games</div>
-      <h2 style="font-size:40px; font-weight:800; letter-spacing:-0.02em; margin:0 0 12px;">Four games. Endless chaos.</h2>
-      <p style="font-size:17px; color:rgba(255,255,255,0.6); margin:0 auto; max-width:560px; line-height:1.5;">Short rounds, big reactions. Jump between them without leaving the room.</p>
+  <section id="games" style="position:relative; max-width:1120px; margin:0 auto; padding:72px 24px;">
+    <div style="text-align:center; margin-bottom:42px;">
+      <div style="font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#A855F7; margin-bottom:12px;">Choose your chaos</div>
+      <h2 style="font-size:40px; font-weight:800; letter-spacing:-.02em; margin:0 0 12px;">12 games. No spectator mode.</h2>
+      <p style="font-size:17px; color:rgba(255,255,255,.6); margin:0 auto; max-width:600px; line-height:1.5;">Bluff, race, solve, collect, and rematch without leaving the room.</p>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(244px,1fr)); gap:20px;">
-
-      <div class="pp-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:24px;">
-        <svg viewBox="0 0 64 64" style="width:60px; height:60px; border-radius:15px; display:block; margin-bottom:18px; box-shadow:0 8px 20px rgba(0,0,0,0.3);">
-          <defs><linearGradient id="bgImp" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#A12BFF"/><stop offset="100%" stop-color="#6912C9"/></linearGradient></defs>
-          <rect width="64" height="64" rx="16" fill="url(#bgImp)"/>
-          <g transform="translate(32,33) scale(1.5)"><path d="M-13 -2 C-13 -9 -4 -9 -2 -4 C-1 -2.5 1 -2.5 2 -4 C4 -9 13 -9 13 -2 C13 5 6 8.5 2.5 5.8 C1 4.7 -1 4.7 -2.5 5.8 C-6 8.5 -13 5 -13 -2 Z" fill="#fff"/><ellipse cx="-6" cy="-1.4" rx="3" ry="2.2" fill="#231044" transform="rotate(-12 -6 -1.4)"/><ellipse cx="6" cy="-1.4" rx="3" ry="2.2" fill="#231044" transform="rotate(12 6 -1.4)"/></g>
-        </svg>
-        <div style="font-size:11.5px; font-weight:700; color:#C9A8FF; margin-bottom:6px;">4–10 players</div>
-        <h3 style="font-size:20px; font-weight:800; margin:0 0 8px;">Imposter</h3>
-        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0;">Everyone gets the secret word — except the impostor. Drop clues, sniff out the faker, and vote them out before they blend in for the win.</p>
-      </div>
-
-      <div class="pp-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:24px;">
-        <svg viewBox="0 0 64 64" style="width:60px; height:60px; border-radius:15px; display:block; margin-bottom:18px; box-shadow:0 8px 20px rgba(0,0,0,0.3);">
-          <defs><linearGradient id="bgGus" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4DF03A"/><stop offset="100%" stop-color="#16A30C"/></linearGradient></defs>
-          <rect width="64" height="64" rx="16" fill="url(#bgGus)"/>
-          <g transform="translate(32,30) scale(1.55)"><path d="M-6 -8 C-6 -14.5 7 -14.5 6 -6 C5.2 -1 0 -1.8 0 3" fill="none" stroke="#fff" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="0" cy="10" r="2.7" fill="#fff"/></g>
-        </svg>
-        <div style="font-size:11.5px; font-weight:700; color:#7EE6A8; margin-bottom:6px;">2–10 players</div>
-        <h3 style="font-size:20px; font-weight:800; margin:0 0 8px;">Guess It</h3>
-        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0;">Describe it, draw it, or act it out on camera. First to shout the secret word scores — fastest fingers and wildest charades win.</p>
-      </div>
-
-      <div class="pp-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:24px;">
-        <svg viewBox="0 0 64 64" style="width:60px; height:60px; border-radius:15px; display:block; margin-bottom:18px; box-shadow:0 8px 20px rgba(0,0,0,0.3);">
-          <defs><linearGradient id="bgDic" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF9A3D"/><stop offset="100%" stop-color="#FF4D4D"/></linearGradient></defs>
-          <rect width="64" height="64" rx="16" fill="url(#bgDic)"/>
-          <g transform="translate(32,32)" fill="#fff"><circle cx="-9" cy="-9" r="3.4"/><circle cx="9" cy="-9" r="3.4"/><circle cx="0" cy="0" r="3.4"/><circle cx="-9" cy="9" r="3.4"/><circle cx="9" cy="9" r="3.4"/></g>
-        </svg>
-        <div style="font-size:11.5px; font-weight:700; color:#FFC182; margin-bottom:6px;">2–8 players</div>
-        <h3 style="font-size:20px; font-weight:800; margin:0 0 8px;">Lucky Dice</h3>
-        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0;">Roll, bank, or push your luck for one more throw. Race to the target score — but greed busts your turn. Pure tabletop tension.</p>
-      </div>
-
-      <div class="pp-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:24px;">
-        <svg viewBox="0 0 64 64" style="width:60px; height:60px; border-radius:15px; display:block; margin-bottom:18px; box-shadow:0 8px 20px rgba(0,0,0,0.3);">
-          <defs><linearGradient id="bgCol" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#271861"/><stop offset="100%" stop-color="#0B0A18"/></linearGradient></defs>
-          <rect width="64" height="64" rx="16" fill="url(#bgCol)"/>
-          <g fill="rgba(255,255,255,0.10)"><rect x="9" y="9" width="13" height="13" rx="3"/><rect x="26" y="9" width="13" height="13" rx="3"/><rect x="43" y="9" width="12" height="13" rx="3"/><rect x="9" y="26" width="13" height="13" rx="3"/><rect x="43" y="26" width="12" height="13" rx="3"/><rect x="9" y="43" width="13" height="12" rx="3"/><rect x="26" y="43" width="13" height="12" rx="3"/></g>
-          <g transform="translate(32,30) scale(1.5)"><circle cx="-3" cy="1" r="3.2" fill="#fff"/><circle cx="0.4" cy="-1.3" r="3.5" fill="#fff"/><circle cx="3.5" cy="1.2" r="3" fill="#fff"/><circle cx="0.3" cy="2.6" r="3.2" fill="#fff"/><circle cx="4.7" cy="0.4" r="2.5" fill="#454a63"/><circle cx="5.4" cy="0" r="0.7" fill="#fff"/></g>
-        </svg>
-        <div style="font-size:11.5px; font-weight:700; color:#FFE08A; margin-bottom:6px;">2–6 players</div>
-        <h3 style="font-size:20px; font-weight:800; margin:0 0 8px;">Collector</h3>
-        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0;">Flip boxes on a grid to collect flowers, sheep and lions. Predators eat prey in your stash — biggest food chain wins. Watch for bombs.</p>
-      </div>
-
+    <div class="pp-game-grid">
+      <article class="pp-game-tile">
+        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/imposter-hero.jpg" alt="Imposter game artwork" loading="lazy">
+        <div><h3>Imposter</h3><p>4–10 players</p></div>
+      </article>
+      <article class="pp-game-tile">
+        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/corptheft-thumb.jpg" alt="Corp vs Theft game artwork" loading="lazy">
+        <div><h3>Corp vs Theft</h3><p>4–10 players</p></div>
+      </article>
+      <article class="pp-game-tile">
+        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/abracadabra-thumb.jpg" alt="Abracadabra game artwork" loading="lazy">
+        <div><h3>Abracadabra</h3><p>2–10 players</p></div>
+      </article>
+      <article class="pp-game-tile">
+        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/who-better-lie-hero.jpg" alt="Who Better Lie game artwork" loading="lazy">
+        <div><h3>Who Better Lie</h3><p>3–10 players</p></div>
+      </article>
+      <article class="pp-game-tile">
+        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/math-thumb.jpg" alt="Math Rapid Fire game artwork" loading="lazy">
+        <div><h3>Math Rapid Fire</h3><p>2–10 players</p></div>
+      </article>
+      <article class="pp-game-tile">
+        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/collector-thumb.jpg" alt="Collector game artwork" loading="lazy">
+        <div><h3>Collector</h3><p>2–6 players</p></div>
+      </article>
+      <article class="pp-game-tile">
+        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/bingo-thumb.jpg" alt="Bingo game artwork" loading="lazy">
+        <div><h3>Bingo</h3><p>2–10 players</p></div>
+      </article>
+      <article class="pp-game-tile">
+        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/zerokatta-thumb.jpg" alt="Zero Katta game artwork" loading="lazy">
+        <div><h3>Zero Katta</h3><p>2 players</p></div>
+      </article>
+      <article class="pp-game-tile">
+        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/ludo-thumb.jpg" alt="Ludo game artwork" loading="lazy">
+        <div><h3>Ludo</h3><p>2–4 players</p></div>
+      </article>
+      <article class="pp-game-tile">
+        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/puzzle-thumb.jpg" alt="Puzzle Master game artwork" loading="lazy">
+        <div><h3>Puzzle Master</h3><p>Solo or together</p></div>
+      </article>
+      <article class="pp-game-tile">
+        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/riddle-thumb.jpg" alt="Riddle in the Middle game artwork" loading="lazy">
+        <div><h3>Riddle in the Middle</h3><p>2–10 players</p></div>
+      </article>
+      <article class="pp-game-tile">
+        <img src="https://xjkdesdrdsudtkvnfkdq.supabase.co/storage/v1/object/public/game-art/wordwizard-thumb.jpg" alt="Word Wizard game artwork" loading="lazy">
+        <div><h3>Word Wizard</h3><p>Solo or together</p></div>
+      </article>
     </div>
   </section>
 
@@ -201,7 +236,7 @@
       <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:30px 26px;">
         <div style="width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg,#FB923C,#e0612c); display:flex; align-items:center; justify-content:center; font-size:19px; font-weight:800; margin-bottom:18px;">3</div>
         <h3 style="font-size:19px; font-weight:800; margin:0 0 9px;">Pick a game &amp; play</h3>
-        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0;">Choose any of the four games, play a quick round, and rematch or swap games instantly — all without leaving the call.</p>
+        <p style="font-size:14.5px; line-height:1.55; color:rgba(255,255,255,0.6); margin:0;">Choose from 12 games, play a quick round, then rematch or swap instantly — all without leaving the room.</p>
       </div>
     </div>
   </section>
